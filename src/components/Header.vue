@@ -1,7 +1,7 @@
 <template>
   <header class="header-sticky header-light bg-white header">
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-xl navbar-light">
         <a class="navbar-brand" href="/">
           Mercherry
         </a>
@@ -52,7 +52,7 @@
       width: calc(100% - 30px);
       background: #fff;
     }
-    @media (max-width: 1200px) {
+    @media (min-width: 1200px) {
       &[class*="-dark"] {
         border-color: rgba(0, 0, 0, 0.1);
       }
@@ -90,6 +90,87 @@
         }
       }
     }
+  }
+  .burger {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    z-index: 100;
+  }
+  .burger span {
+    position: relative;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -1.5px;
+  }
+  .burger span, .burger span::before, .burger span::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    outline: 1px solid transparent;
+    -webkit-transition-property: background-color;
+    -moz-transition-property: background-color;
+    -o-transition-property: background-color;
+    transition-property: background-color;
+    transition-property: background-color, transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    transition-duration: 0.3s;
+  }
+  .burger span::before, .burger span::after {
+    position: absolute;
+    content: "";
+  }
+  .burger span::before {
+    top: -6px;
+  }
+  .burger span::after {
+    top: 6px;
+  }
+  .burger.clicked span {
+    background-color: transparent;
+  }
+  .burger.clicked span::before {
+    -webkit-transform: translateY(6px) rotate(45deg);
+    -moz-transform: translateY(6px) rotate(45deg);
+    -ms-transform: translateY(6px) rotate(45deg);
+    -o-transform: translateY(6px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
+  }
+  .burger.clicked span::after {
+    -webkit-transform: translateY(-6px) rotate(-45deg);
+    -moz-transform: translateY(-6px) rotate(-45deg);
+    -ms-transform: translateY(-6px) rotate(-45deg);
+    -o-transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .burger.clicked span:before, .burger.clicked span:after {
+    background-color: #000;
+  }
+  .burger.burger-dot {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    background: #fff;
+    border-radius: 50%;
+  }
+  .burger:hover {
+    cursor: pointer;
   }
   @media (min-width: 1200px) {
     .header-dark[class*="-not-top"][class*="-pinned"],

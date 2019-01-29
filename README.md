@@ -1,4 +1,4 @@
-# white
+# mercherry
 
 ## Project setup
 ```

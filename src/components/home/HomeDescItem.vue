@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-6 col-lg-4 p-5 text-center">
+  <div class="col-md-6 col-lg-4 p-sm-5 p-3 text-center">
     <template v-if="item.last != undefined">
         <div class="text-uppercase">Получайте бонус</div>
         <i class="svg-icon w-5 equal"></i>

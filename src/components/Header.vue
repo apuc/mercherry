@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav align-items-center mr-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Список вакансий</router-link>
+              <router-link class="nav-link" to="/job">Список вакансий</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/">Написать нам</router-link>

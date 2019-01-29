@@ -6,7 +6,7 @@
           <h1>
             Поиск вакансий и разовых заданий в торговых точках
           </h1>
-          <a class="btn btn-purple btn-rounded px-5" href="/job/default/index">Поиск вакансий</a>
+          <router-link class="btn btn-purple btn-rounded px-5" to="/job">Поиск вакансий</router-link>
         </div>
       </div>
       <div class="row justify-content-center mt-10">

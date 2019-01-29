@@ -5,7 +5,7 @@
         <i class="svg-icon w-5 equal"></i>
         <h4 class="fs-60 font-weight-normal">{{item.price}}</h4>
         <p>{{item.desc}}</p>
-        <a class="btn btn-lg btn-green btn-block" href="/job/default/index" v-if="item.button != undefined">{{item.button}}</a>
+        <router-link class="btn btn-lg btn-green btn-block" to="/job" v-if="item.button != undefined">{{item.button}}</router-link>
     </template>
     <template v-else>
       <i class="svg-icon w-50 equal">

@@ -1274,6 +1274,7 @@ selectric-items, .container .swiper-container .swiper-slide, .container .gallery
 }
 label {
     margin-bottom: .25rem;
+    margin-right: 5px;
     font-size: 12px;
     text-transform: uppercase;
     color: #999;
@@ -1506,6 +1507,9 @@ label {
 }
 a.text-danger:hover, a.text-danger:focus {
     color: #f20311 !important;
+}
+input[type="radio"], input[type="checkbox"] {
+    vertical-align: middle;
 }
 .was-validated .form-control:invalid, .form-control.is-invalid, .was-validated
 .custom-select:invalid,

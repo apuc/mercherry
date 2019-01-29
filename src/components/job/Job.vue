@@ -1,19 +1,17 @@
 <template>
-  <section class="home-vacancy">
+  <section class="job">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
           <div class="text-center mb-5">
-            <h2>Доступные вакансии</h2>
+            <h2>Доступные вакансии и задания</h2>
           </div>
+          <JobForm/>
           <ul class="list-unstyled job-list">
             <Vacancy v-for="item in vacancies"
                      :item="item"
             />
           </ul>
-          <div class="text-center mt-4">
-            <router-link class="btn btn-purple px-5" to="/job">Показать еще</router-link>
-          </div>
         </div>
       </div>
     </div>
@@ -21,9 +19,10 @@
 </template>
 
 <script>
+  import JobForm from "./JobForm";
   import Vacancy from "../Vacancy";
   export default {
-    name: "HomeVacancies",
+    name: "Job",
     data() {
       return {
         vacancies: [
@@ -50,7 +49,7 @@
         ]
       }
     },
-    components: {Vacancy}
+    components: {Vacancy, JobForm}
   }
 </script>
 

@@ -1,10 +1,10 @@
 <template>
-  <header class="header-sticky header-light bg-white header">
+  <header class="header" :class="headerClass === undefined ? 'header-sticky bg-white header-light' : headerClass">
     <div class="container">
-      <nav class="navbar navbar-expand-xl navbar-light">
-        <a class="navbar-brand" href="/">
+      <nav class="navbar navbar-expand-xl" :class="color === undefined ? 'navbar-light' : `navbar-${color}`">
+        <router-link class="navbar-brand" to="/">
           Mercherry
-        </a>
+        </router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="burger">
             <span></span>
@@ -14,15 +14,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav align-items-center mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/job/default/index">Список вакансий</a>
+              <router-link class="nav-link" to="/">Список вакансий</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact">Написать нам</a>
+              <router-link class="nav-link" to="/">Написать нам</router-link>
             </li>
           </ul>
           <ul class="navbar-nav align-items-center mr-0">
             <li class="nav-item">
-              <a class="nav-link" href="/login">Вход / Регистрация</a>
+              <router-link class="nav-link" to="/login">Вход / Регистрация</router-link>
             </li>
           </ul>
         </div>
@@ -33,7 +33,11 @@
 
 <script>
   export default {
-    name: "Header"
+    name: "Header",
+    props: [
+      'color',
+      'headerClass'
+    ]
   }
 </script>
 
@@ -290,5 +294,8 @@
         color: #fff;
       }
     }
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: #fff;
   }
 </style>

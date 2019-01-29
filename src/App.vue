@@ -42,4 +42,7 @@
     line-height: 1.75em;
     color: #646464;
   }
+  a:hover {
+    text-decoration: none;
+  }
 </style>

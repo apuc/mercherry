@@ -9,7 +9,6 @@
             1: {clusterDisableClickZoom: true}
           }"
           :placemarks="placemarks"
-          @map-was-initialized="initHandler"
       >
 
         <ymap-marker

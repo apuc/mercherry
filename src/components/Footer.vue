@@ -25,13 +25,13 @@
           <div class="col-md-5 text-center text-md-left">
             <ul class="nav">
               <li class="nav-item">
-                <a class="nav-link" href="/contact">Контакты</a>
+                <router-link class="nav-link" to="#">Контакты</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/site/offer">Пользовательское соглашение</a>
+                <router-link class="nav-link" to="#">Пользовательское соглашение</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/site/personal">Политика обработки персональных данных</a>
+                <router-link class="nav-link" to="/policy">Политика обработки персональных данных</router-link>
               </li>
             </ul>
           </div>

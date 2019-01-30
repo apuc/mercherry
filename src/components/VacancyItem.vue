@@ -11,12 +11,15 @@
               <template v-if="item.city != ''">
                 {{item.city}},
               </template>
+
               <template v-if="item.salary != ''">
                 {{item.salary}}₽,
               </template>
+
               <template v-if="item.metro != ''">
                 {{item.metro}},
               </template>
+
               <template v-if="item.employment != ''">
                 {{item.employment}}
               </template>

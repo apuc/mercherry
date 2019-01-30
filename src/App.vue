@@ -77,4 +77,7 @@
   .text-white [class*="separator"], .text-white[class*="separator"] {
     border-color: rgba(255, 255, 255, 0.1);
   }
+  textarea {
+    min-height: 100px;
+  }
 </style>

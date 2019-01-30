@@ -25,7 +25,7 @@
           <div class="col-md-5 text-center text-md-left">
             <ul class="nav">
               <li class="nav-item">
-                <router-link class="nav-link" to="#">Контакты</router-link>
+                <router-link class="nav-link" to="/contacts">Контакты</router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="#">Пользовательское соглашение</router-link>

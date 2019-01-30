@@ -5,6 +5,7 @@ import Login from "./views/Login";
 import Job from "./views/Job";
 import Vacancy from "./views/Vacancy";
 import Policy from "./views/Policy";
+import Contacts from "./views/Contacts";
 
 Vue.use(Router);
 
@@ -44,6 +45,11 @@ export default new Router({
       path: '/policy',
       name: 'policy',
       component: Policy
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: Contacts
     }
   ]
 })

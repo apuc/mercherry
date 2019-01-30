@@ -10,7 +10,7 @@
       />
     </ul>
     <div class="text-center mt-4">
-      <a class="btn btn-purple px-5" href="/job/default/index">Смотреть еще</a>
+      <router-link class="btn btn-purple px-5" to="/job">Смотреть еще</router-link>
     </div>
   </div>
 </template>
@@ -23,16 +23,28 @@
       return {
         vacancies: [
           {
-            name: 'Супервайзер мерчендайзеров',
-            desc: 'Санкт-Петербург, 0₽, Полная занятость'
+            "id": 1,
+            "label": "Test1",
+            "city": "Пермь",
+            "metro": "",
+            "salary": 100500,
+            "employment": "Полная занятость"
           },
           {
-            name: 'Региональный менеджер по продажам',
-            desc: 'Санкт-Петербург, Автово, 0₽, Полная занятость'
+            "id": 2,
+            "label": "Test2",
+            "city": "Москва",
+            "metro": "",
+            "salary": 10500,
+            "employment": "Частичная занятость"
           },
           {
-            name: 'Мобильный мерчандайзер на напитки',
-            desc: 'Санкт-Петербург, Московские ворота, 0₽, Полная занятость'
+            "id": 3,
+            "label": "Test3",
+            "city": "Москва",
+            "metro": "Бабушкинская",
+            "salary": 100500,
+            "employment": "Полная занятость"
           }
         ]
       }

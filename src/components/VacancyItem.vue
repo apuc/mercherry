@@ -4,10 +4,23 @@
       <div class="row">
         <div class="col-md-8">
           <h5 class="mt-0 mb-0">
-            <a class="black-link" href="#">{{item.name}}</a>
+            <router-link class="black-link" :to="`/job/${item.id}`">{{item.label}}</router-link>
           </h5>
           <p class="mb-0">
-							<span>{{item.desc}}</span>
+            <span>
+              <template v-if="item.city != ''">
+                {{item.city}},
+              </template>
+              <template v-if="item.salary != ''">
+                {{item.salary}}₽,
+              </template>
+              <template v-if="item.metro != ''">
+                {{item.metro}},
+              </template>
+              <template v-if="item.employment != ''">
+                {{item.employment}}
+              </template>
+            </span>
           </p>
         </div>
         <div class="col-md-4 text-right">
@@ -20,9 +33,12 @@
 <script>
   export default {
     name: "Vacancy",
-    props: [
-      'item'
-    ]
+    props: {
+      item: {
+        type: Object,
+        required: true
+      }
+    }
   }
 </script>
 

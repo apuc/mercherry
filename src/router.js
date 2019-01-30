@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Login from "./views/Login";
 import Job from "./views/Job";
 import Vacancy from "./views/Vacancy";
+import Policy from "./views/Policy";
 
 Vue.use(Router);
 
@@ -35,9 +36,14 @@ export default new Router({
       ]
     },
     {
-      path: '/vacancy',
+      path: '/job/:id',
       name: 'vacancy',
-      component: Vacancy
+      component: Vacancy,
+    },
+    {
+      path: '/policy',
+      name: 'policy',
+      component: Policy
     }
   ]
 })

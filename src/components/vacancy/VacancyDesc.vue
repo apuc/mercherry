@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-xl-6 mb-1" v-for="(value, key, index) in vacancyData">
           <div class="row">
-            <div class="col-6">{{vacancyDataName[key]}}:</div>
+            <div class="col-6 c-dark-gray">{{vacancyDataName[key]}}:</div>
             <div class="col-6">{{value}}</div>
           </div>
         </div>

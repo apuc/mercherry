@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-dark text-white footer">
-    <div class="container">
+  <footer class="footer" :class="layout == 'job' ? 'mt-2' : 'bg-dark text-white'">
+    <div v-if="layout !== 'job'" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <h2>Подпишись на вакансии</h2>
@@ -46,7 +46,10 @@
 
 <script>
   export default {
-    name: "Footer"
+    name: "Footer",
+    props: [
+      'layout'
+    ]
   }
 </script>
 

@@ -1,9 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import './registerServiceWorker'
-import VeeValidate from "vee-validate"
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import './registerServiceWorker';
+import VeeValidate from "vee-validate";
+import MainLayout from './views/Layouts/MainLayout';
+import AuthLayout from './views/Layouts/AuthLayout';
+import JobLayout from './views/Layouts/JobLayout';
+
+Vue.component('main-layout', MainLayout);
+Vue.component('auth-layout', AuthLayout);
+Vue.component('job-layout', JobLayout);
 
 Vue.use(VeeValidate, {
   validity: true

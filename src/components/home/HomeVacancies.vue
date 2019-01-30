@@ -7,7 +7,7 @@
             <h2>Доступные вакансии</h2>
           </div>
           <ul class="list-unstyled job-list">
-            <Vacancy v-for="item in vacancies"
+            <VacancyItem v-for="item in vacancies"
                      :item="item"
             />
           </ul>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import Vacancy from "../Vacancy";
+  import VacancyItem from "../VacancyItem";
   export default {
     name: "HomeVacancies",
     data() {
@@ -50,7 +50,7 @@
         ]
       }
     },
-    components: {Vacancy}
+    components: {VacancyItem}
   }
 </script>
 

@@ -3,7 +3,7 @@
 
     <form>
       <div class="form-row mb-0">
-      <div class="col">
+      <div class="col-sm">
         <div class="form-group field-city">
           <label class="control-label" for="city">Город</label>
           <div>
@@ -12,7 +12,7 @@
           <div class="help-block"></div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-sm">
         <div class="form-group field-total_salary">
           <label class="control-label" for="total_salary">Заработная плата</label>
           <input type="text" id="total_salary" class="form-control" name="total_salary" placeholder="От">

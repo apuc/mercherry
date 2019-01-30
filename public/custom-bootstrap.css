@@ -1533,6 +1533,111 @@ input[type="radio"], input[type="checkbox"] {
     border-color: #54af5d;
     box-shadow: 0 0 0 0 rgba(84, 175, 93, 0.25);
 }
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: 0;
+    line-height: 1.25;
+    color: #4829b2;
+    background-color: #fff;
+    border: 0 solid transparent;
+}
+.page-link:hover {
+    z-index: 2;
+    color: #2f1b74;
+    text-decoration: none;
+    background-color: #e5e5e5;
+    border-color: #999;
+}
+.page-link:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: 0;
+}
+.page-link:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #4829b2;
+    border-color: #4829b2;
+}
+.page-item.disabled .page-link {
+    color: #555;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #999;
+}
+.pagination-lg .page-link {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+.pagination-lg .page-item:first-child .page-link {
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+.pagination-lg .page-item:last-child .page-link {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+.pagination-sm .page-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+.pagination-sm .page-item:first-child .page-link {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+}
+.pagination-sm .page-item:last-child .page-link {
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+}
+.page-link:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: none;
+}
+.page-link:hover {
+    z-index: 2;
+    color: #2f1b74;
+    text-decoration: none;
+    background-color: #e5e5e5;
+    border-color: #999;
+}
+.disabled {
+    pointer-events: none;
+}
+.text-primary {
+    color: #4829b2 !important;
+}
+.eyebrow, .footer-title, .entry time, .widget-title, .card-price-3 .card-title {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0em;
+}
 @media (min-width: 1600px) {
     .container {
         max-width: 1300px;

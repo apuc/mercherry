@@ -1,10 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
 import Login from "./views/Login";
-import Job from "./components/job/Job";
+import Job from "./views/Job";
+import Vacancy from "./views/Vacancy";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -18,12 +19,25 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
+      meta: {layout: 'auth'},
       component: Login
     },
     {
       path: '/job',
-      name: 'jog',
-      component: Job
+      name: 'job',
+      meta: {layout: 'job'},
+      component: Job,
+      children: [
+        {
+          path: 'page/:id',
+          meta: {layout: 'job'}
+        }
+      ]
+    },
+    {
+      path: '/vacancy',
+      name: 'vacancy',
+      component: Vacancy
     }
   ]
 })

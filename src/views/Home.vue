@@ -1,11 +1,9 @@
 <template>
-  <div class="home">
-    <Header/>
+  <main class="main">
     <HomeSearch/>
     <HomeDesc/>
     <HomeVacancies/>
-    <Footer/>
-  </div>
+  </main>
 </template>
 
 <script>

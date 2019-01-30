@@ -1638,6 +1638,18 @@ input[type="radio"], input[type="checkbox"] {
     text-transform: uppercase;
     letter-spacing: 0em;
 }
+.ff-nunito {
+    font-family: 'Nunito', sans-serif;
+}
+.ff-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+.ff-sans-pro {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.c-gray {
+    color: #ccc
+}
 @media (min-width: 1600px) {
     .container {
         max-width: 1300px;

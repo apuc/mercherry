@@ -3,27 +3,29 @@
 
     <form>
       <div class="form-row mb-0">
-      <div class="col-sm">
-        <div class="form-group field-city">
-          <label class="control-label" for="city">Город</label>
-          <div>
-            <input type="text" id="city" class="form-control" name="city">
+        <div class="col-sm">
+          <div class="form-group field-city mb-3">
+            <label class="control-label" for="city">Город</label>
+            <div>
+              <input type="text" id="city" class="form-control" name="city">
+            </div>
+            <div class="help-block"></div>
           </div>
-          <div class="help-block"></div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group field-total_salary mb-3">
+            <label class="control-label" for="total_salary">Заработная плата</label>
+            <input type="text" id="total_salary" class="form-control" name="total_salary" placeholder="От">
+            <div class="help-block"></div>
+          </div>
+        </div>
+        <div class="px-1">
+          <div class="form-group mb-3">
+            <label class="contol-label">&nbsp;</label>
+            <button type="submit" class="btn btn-primary col">Искать</button>
+          </div>
         </div>
       </div>
-      <div class="col-sm">
-        <div class="form-group field-total_salary">
-          <label class="control-label" for="total_salary">Заработная плата</label>
-          <input type="text" id="total_salary" class="form-control" name="total_salary" placeholder="От">
-          <div class="help-block"></div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="contol-label">&nbsp;</label>
-        <button type="submit" class="btn btn-primary col">Искать</button>
-      </div>
-    </div>
       <div class="row mb-0">
         <div class="col-12 metro-block" style="display:none">
           <div class="form-group field-metro">
@@ -34,10 +36,9 @@
           </div>
         </div>
       </div>
-      <div class="form-group field-employment">
-        <label class="control-label">&nbsp;</label>
+      <div class="form-group field-employment mb-3">
         <div id="employment">
-          <label class="radio" v-for="(radioItem, index) in radio">
+          <label class="radio mr-2" v-for="(radioItem, index) in radio">
             <input type="radio" name="employment" :value=index>
             <span class="radio__circle"></span>
             <span>{{radioItem}}</span>

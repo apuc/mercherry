@@ -155,4 +155,10 @@
       }
     }
   }
+  .mr-13px {
+    margin-right: 13px;
+  }
+  .mr-16px {
+    margin-right: 16px;
+  }
 </style>

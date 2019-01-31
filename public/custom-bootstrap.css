@@ -260,6 +260,7 @@ selectric-items, .container .swiper-container .swiper-slide, .container .gallery
     box-shadow: 0 0 0 0 rgba(252, 44, 56, 0.5);
 }
 .btn-small {
+    min-width: unset;
     padding: 5px 25px;
     font-size: 12px;
 }
@@ -421,6 +422,12 @@ selectric-items, .container .swiper-container .swiper-slide, .container .gallery
 }
 [class*="rounded"] {
     border-radius: 10rem !important;
+}
+.form-row {
+    margin: 0 -10px;
+}
+.form-row>.col, .form-row>[class*=col-] {
+    padding: 0 10px;
 }
 .w-25 {
     width: 25% !important;
@@ -1343,7 +1350,7 @@ label {
 }
 .form-control {
     height: 46px;
-    padding: 3px 20px 4px;
+    padding: 7px 20px 8px;
     color: #151515;
     border: 1px solid #d4d7da;
     border-radius: 2em;
@@ -1712,8 +1719,20 @@ input[type="radio"], input[type="checkbox"] {
 .c-gray {
     color: #ccc
 }
+.c-medium-gray {
+    color: #8a959e;
+}
+.c-medium-gray .fa {
+    color: #7e8890;
+}
 .c-dark-gray {
     color: #646464;
+}
+.c-dark-link {
+    color: #323a45;
+}
+.lh-1 {
+    line-height: 1;
 }
 @media (min-width: 1600px) {
     .container {

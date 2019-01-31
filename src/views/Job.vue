@@ -38,7 +38,7 @@
             "city": "Пермь",
             "metro": "",
             "salary": 100500,
-            "employment": "Полная занятость",
+            "employment": "Полная",
             "project": "project test"
           },
           {
@@ -47,7 +47,7 @@
             "city": "Москва",
             "metro": "",
             "salary": 10500,
-            "employment": "Частичная занятость",
+            "employment": "Частичная",
             "project": "project test"
           },
           {
@@ -56,7 +56,7 @@
             "city": "Москва",
             "metro": "Бабушкинская",
             "salary": 100500,
-            "employment": "Разовые задания",
+            "employment": "Разовые",
             "project": "project test"
           },
           {
@@ -65,7 +65,7 @@
             "city": "Москва",
             "metro": "Бабушкинская",
             "salary": 100500,
-            "employment": "Полная занятость",
+            "employment": "Полная",
             "project": "project test"
           },
           {
@@ -74,7 +74,7 @@
             "city": "Москва",
             "metro": "Бабушкинская",
             "salary": 100500,
-            "employment": "Полная занятость",
+            "employment": "Полная",
             "project": "project test"
           }
         ],

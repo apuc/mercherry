@@ -1,30 +1,31 @@
 <template>
-  <li class="media bordered mb-2 p-2">
+  <li class="media bordered mb-2 p-3">
     <div class="media-body">
-      <div class="row flex-sm-row flex-column">
-        <div class="px-2">
+      <div class="d-flex flex-wrap flex-sm-row flex-column">
+        <div class="pr-2 d-flex flex-column">
           <h5 class="mt-0 mb-0">
-            <router-link class="black-link" :to="`/job/${item.id}`">{{item.label}}</router-link>
+            <router-link class="c-dark-link" :to="`/job/${item.id}`">{{item.label}}</router-link>
           </h5>
-          <p class="mb-0 mt-1">
-            <span v-if="item.project != ''" class="font-weight-bold">{{item.project}} </span>
+          <p class="mb-0 c-medium-gray mt-auto">
             <span>
-              <template v-if="item.city != ''">
+              <span v-if="item.project != ''" class="mr-16px">{{item.project}} </span>
+
+              <span v-if="item.city != ''" class="mr-13px d-inline-block">
                 <i class="fa fa-map-marker"></i>
                 {{item.city}}
-              </template>
+              </span>
 
-              <template v-if="item.metro != ''">
-                <img src="img/Moscow_Metro.svg" alt="" width="16">
-                {{item.metro}}
-              </template>
+              <span class="d-inline-block" v-if="item.metro != ''">
+                <img src="img/Moscow_Metro.svg" alt="" height="13">
+                 {{item.metro}}
+              </span>
             </span>
           </p>
         </div>
         <div class="vacancy-item-right">
           <span v-if="item.employment !== ''" class="btn btn-small pointer-none" :class="'btn-' + employment">{{item.employment}}</span>
 
-          <p class="mt-1 mb-0" v-if="item.salary != ''">
+          <p class="mt-2 mb-0 c-medium-gray lh-1" v-if="item.salary != ''">
             {{item.salary}}₽
           </p>
         </div>
@@ -45,11 +46,11 @@
     computed: {
       employment() {
         switch(this.item.employment) {
-          case 'Полная занятость':
+          case 'Полная':
             return 'green';
-          case 'Частичная занятость':
+          case 'Частичная':
             return 'orange';
-          case 'Разовые задания':
+          case 'Разовые':
             return 'danger'
         }
       }
@@ -62,15 +63,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 225px;
+    width: 120px;
     margin-left: auto;
-    padding: 0 15px;
     @media (max-width: 575px) {
       width: 100%;
       margin-top: 10px;
     }
     .btn {
-      width: 225px;
+      width: 120px;
     }
   }
 </style>

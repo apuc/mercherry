@@ -281,4 +281,14 @@
   .text-white .nav-switch .lavalamp-object {
     background: rgba(255, 255, 255, 0.2);
   }
+  .nav-tabs .nav-item {
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-tabs .nav-item:hover {
+    border-bottom: 2px solid transparent;
+  }
+  .nav-tabs .nav-item.active {
+    border-bottom: 2px solid #4829b2;
+  }
 </style>

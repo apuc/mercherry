@@ -6,6 +6,7 @@ import Job from "./views/Job";
 import Vacancy from "./views/Vacancy";
 import Policy from "./views/Policy";
 import Contacts from "./views/Contacts";
+import Profile from "./views/Profile";
 
 Vue.use(Router);
 
@@ -50,6 +51,12 @@ export default new Router({
       path: '/contacts',
       name: 'contacts',
       component: Contacts
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: {layout: 'job'},
+      component: Profile
     }
   ]
 })

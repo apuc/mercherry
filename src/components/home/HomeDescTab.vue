@@ -1,5 +1,5 @@
 <template>
-  <a class="nav-item nav-link lavalamp-item" :class="active" data-toggle="tab" :href= '"#" + item.href'>
+  <a class="nav-item nav-link" :class="active" data-toggle="tab" :href= '"#" + item.href'>
     {{ item.title }}
   </a>
 </template>

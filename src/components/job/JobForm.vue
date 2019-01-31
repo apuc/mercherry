@@ -37,14 +37,10 @@
       <div class="form-group field-employment">
         <label class="control-label">&nbsp;</label>
         <div id="employment">
-          <label>
-            <input type="radio" name="employment" value="0"> Полная занятость
-          </label>
-          <label>
-            <input type="radio" name="employment" value="1"> Частичная занятость
-          </label>
-          <label>
-            <input type="radio" name="employment" value="2"> Разовые задания
+          <label class="radio" v-for="(radioItem, index) in radio">
+            <input type="radio" name="employment" :value=index>
+            <span class="radio__circle"></span>
+            <span>{{radioItem}}</span>
           </label>
         </div>
         <div class="help-block"></div>
@@ -55,7 +51,16 @@
 
 <script>
   export default {
-    name: "JobForm"
+    name: "JobForm",
+    data() {
+      return {
+        radio: [
+          'Полная занятость',
+          'Частичная занятость',
+          'Разовые задания'
+        ]
+      }
+    }
   }
 </script>
 

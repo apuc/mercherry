@@ -16,7 +16,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,700");
   @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,500,700");
   @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
@@ -77,12 +77,82 @@
   .text-white [class*="separator"], .text-white[class*="separator"] {
     border-color: rgba(255, 255, 255, 0.1);
   }
+  .pointer-none {
+    pointer-events: none;
+  }
   textarea {
     min-height: 100px;
   }
   @media (max-width: 576px) {
     textarea {
       min-height: 150px;
+    }
+  }
+  .radio,
+  .checkbox {
+    position: relative;
+    display: inline-flex;
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      &:checked + .radio__circle,
+      &:checked + .checkbox__circle {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+    &__circle {
+      position: relative;
+      display: inline-block;
+      min-width: 16px;
+      min-height: 16px;
+      max-width: 16px;
+      max-height: 16px;
+      margin-right: 5px;
+      border: 1px solid #d4d7da;
+      border-radius: 50%;
+      &:after {
+        position: absolute;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  .radio {
+    &__circle {
+      &:after {
+        top: 3px;
+        left: 3px;
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #646464;
+      }
+    }
+  }
+  .checkbox {
+    &__circle {
+      &:after {
+        top: 0;
+        left: 1px;
+        content: "\f00c";
+        font-family: FontAwesome;
+        color: #54af5d;
+        font-size: 11px;
+      }
+    }
+  }
+  @-moz-document url-prefix() {
+    .checkbox {
+      &__circle {
+        &:after {
+          top: -2px;
+        }
+      }
     }
   }
 </style>

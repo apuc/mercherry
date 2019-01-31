@@ -44,13 +44,14 @@
           </div>
 
           <div class="form-group field-signupform-confirm">
-            <div class="checkbox">
-              <label for="signupform-confirm">
+            <div>
+              <label class="checkbox" for="signupform-confirm">
                 <input type="checkbox"
                        id="signupform-confirm"
                        name="checkbox"
                        v-validate="'required'">
-                Я согласен с пользовательским соглашением и даю согласие на обработку персональных данных и получение информации по sms и email
+                <span class="checkbox__circle"></span>
+                <span>Я согласен с пользовательским соглашением и даю согласие на обработку персональных данных и получение информации по sms и email</span>
               </label>
               <p class="text-danger" v-show="errors.has('checkbox')">Вам необходимо согласиться с правилами сайта</p>
             </div>

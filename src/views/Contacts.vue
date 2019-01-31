@@ -37,7 +37,8 @@
                           v-model="email"
                           v-validate="'required|email'"
                       >
-                      <p class="text-danger" v-show="!emailFlags.valid && emailFlags.touched">Необходимо заполнить «Email.</p>
+                      <p class="text-danger" v-show="emailFlags.invalid && emailFlags.touched && !emailFlags.dirty">Необходимо заполнить «Email.</p>
+                      <p class="text-danger" v-show="emailFlags.invalid && emailFlags.dirty">Значение «Email» не является правильным email адресом.</p>
                     </div>
                   </div>
                 </div>

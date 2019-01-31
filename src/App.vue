@@ -80,4 +80,9 @@
   textarea {
     min-height: 100px;
   }
+  @media (max-width: 576px) {
+    textarea {
+      min-height: 150px;
+    }
+  }
 </style>

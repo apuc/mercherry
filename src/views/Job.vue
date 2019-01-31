@@ -3,7 +3,7 @@
     <section class="job">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-10 col-lg-8">
+          <div class="col-md-10">
             <div class="text-center mb-5">
               <h2>Доступные вакансии и задания</h2>
             </div>

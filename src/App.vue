@@ -43,7 +43,6 @@
     line-height: 1.5;
     color: #151515;
     text-align: left;
-    background-color: #f5f5f5;
   }
 
   section {

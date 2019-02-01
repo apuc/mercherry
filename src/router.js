@@ -55,7 +55,7 @@ export default new Router({
     {
       path: '/profile',
       name: 'profile',
-      meta: {layout: 'job'},
+      meta: {layout: 'profile'},
       component: Profile
     }
   ]

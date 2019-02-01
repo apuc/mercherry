@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer" :class="layout == 'job' ? 'mt-2' : 'bg-dark text-white'">
-    <div v-if="layout !== 'job'" class="container">
+  <footer class="footer" :class="footerClass">
+    <div v-if="layout === undefined" class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <h2>Подпишись на вакансии</h2>
@@ -49,7 +49,19 @@
     name: "Footer",
     props: [
       'layout'
-    ]
+    ],
+    computed: {
+      footerClass() {
+        switch(this.layout) {
+          case 'job':
+            return '';
+          case 'profile':
+            return 'bg-profile';
+          default:
+            return 'bg-dark text-white';
+        }
+      }
+    }
   }
 </script>
 

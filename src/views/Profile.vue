@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="main bg-profile">
     <ProfileUser/>
     <ProfileNav :tabs="tabs"/>
     <section class="pt-2">
@@ -63,6 +63,8 @@
   }
 </script>
 
-<style scoped>
-
+<style>
+  .bg-profile {
+    background-color: #f8f8f8;
+  }
 </style>

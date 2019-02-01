@@ -6,6 +6,7 @@ import './registerServiceWorker';
 import VeeValidate from "vee-validate";
 import MainLayout from './views/Layouts/MainLayout';
 import AuthLayout from './views/Layouts/AuthLayout';
+import ProfileLayout from './views/Layouts/ProfileLayout';
 import JobLayout from './views/Layouts/JobLayout';
 import YmapPlugin from 'vue-yandex-maps'
 import { VueMaskDirective } from 'v-mask'
@@ -21,6 +22,7 @@ Vue.directive('mask', VueMaskDirective);
 Vue.component('main-layout', MainLayout);
 Vue.component('auth-layout', AuthLayout);
 Vue.component('job-layout', JobLayout);
+Vue.component('profile-layout', ProfileLayout);
 
 Vue.use(VeeValidate, {
   validity: true

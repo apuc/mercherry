@@ -21,7 +21,6 @@
   @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,500,700");
   @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&subset=cyrillic,cyrillic-ext');
-  @import '../public/custom-bootstrap.css';
   @import '../public/libs/font-awesome-4.7.0/css/font-awesome.css';
 
   html {
@@ -44,6 +43,7 @@
     line-height: 1.5;
     color: #151515;
     text-align: left;
+    background-color: #f5f5f5;
   }
 
   section {
@@ -65,6 +65,16 @@
 
   a:hover {
     text-decoration: none;
+  }
+  button {
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  strong, b {
+    color: #000;
+    font-weight: 700;
   }
   [class*="separator"][class*="-top"] {
     border-top-width: 1px;

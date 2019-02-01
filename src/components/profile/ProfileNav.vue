@@ -8,7 +8,7 @@
                class="nav-item nav-link"
                data-toggle="tab"
                :href="`#${item.href}`"
-               :class="index === 1 ? 'active' : ''"
+               :class="index === 0 ? 'active' : ''"
             >
               {{item.name}}
             </a>

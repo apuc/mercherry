@@ -8,6 +8,7 @@ import MainLayout from './views/Layouts/MainLayout';
 import AuthLayout from './views/Layouts/AuthLayout';
 import JobLayout from './views/Layouts/JobLayout';
 import YmapPlugin from 'vue-yandex-maps'
+import { VueMaskDirective } from 'v-mask'
 
 const options = { // you may define your apiKey, lang and version or skip this.
   apiKey: 'xxx', // '' by default
@@ -15,6 +16,7 @@ const options = { // you may define your apiKey, lang and version or skip this.
   version: '2.1' // '2.1' by default
 };
 Vue.use(YmapPlugin, options);
+Vue.directive('mask', VueMaskDirective);
 
 Vue.component('main-layout', MainLayout);
 Vue.component('auth-layout', AuthLayout);

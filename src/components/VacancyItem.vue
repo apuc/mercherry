@@ -1,5 +1,5 @@
 <template>
-  <li class="media bordered mb-2 p-3">
+  <li class="media bordered mb-2 p-3 bg-white">
     <div class="media-body">
       <div class="d-flex flex-wrap flex-sm-row flex-column">
         <div class="pr-2 d-flex flex-column">
@@ -16,7 +16,7 @@
               </span>
 
               <span class="d-inline-block" v-if="item.metro != ''">
-                <img src="img/Moscow_Metro.svg" alt="" height="13">
+                <img src="/img/Moscow_Metro.svg" alt="" height="13">
                  {{item.metro}}
               </span>
             </span>

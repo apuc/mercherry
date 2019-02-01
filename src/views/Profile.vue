@@ -13,6 +13,8 @@
         </div>
       </div>
     </section>
+    <ProfileModalAvatar/>
+    <ProfileModalCity/>
   </main>
 </template>
 
@@ -24,9 +26,14 @@
   import ProfilePayment from "../components/profile/ProfilePayment";
   import ProfileInvited from "../components/profile/ProfileInvited";
   import ProfileConfig from "../components/profile/ProfileConfig";
+  import ProfileModalAvatar from "../components/profile/ProfileModalAvatar";
+  import ProfileModalCity from "../components/profile/ProfileModalCity";
   export default {
     name: "Profile",
-    components: {ProfileConfig, ProfileInvited, ProfilePayment, ProfileTask, ProfileVacancy, ProfileNav, ProfileUser},
+    components: {
+      ProfileModalCity,
+      ProfileModalAvatar,
+      ProfileConfig, ProfileInvited, ProfilePayment, ProfileTask, ProfileVacancy, ProfileNav, ProfileUser},
     data() {
       return {
         tabs: [

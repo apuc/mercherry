@@ -17,7 +17,7 @@
               <router-link class="nav-link" to="/job">Список вакансий</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Написать нам</router-link>
+              <router-link class="nav-link" to="/contacts">Написать нам</router-link>
             </li>
           </ul>
           <ul class="navbar-nav align-items-center mr-0">

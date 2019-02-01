@@ -261,8 +261,23 @@ selectric-items, .container .swiper-container .swiper-slide, .container .gallery
 }
 .btn-small {
     min-width: unset;
-    padding: 5px 25px;
-    font-size: 12px;
+    padding: 4px 25px 5px;
+    font-size: 13px;
+}
+.btn-black {
+    color: #fff;
+    background-color: #323a45;
+}
+.btn-black:hover {
+    color: #fff;
+    background-color: #1d2127;
+}
+.btn-black:focus, .btn-black.focus {
+    box-shadow: 0 0 0 0 rgba(50, 58, 69, 0.5);
+}
+.btn-black:not(:disabled):not(.disabled):active:focus, .btn-black:not(:disabled):not(.disabled).active:focus,
+.show > .btn-black.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0 rgba(50, 58, 69, 0.5);
 }
 .btn-orange {
     color: #fff;

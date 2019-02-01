@@ -5,24 +5,21 @@
       <div class="form-row mb-0">
         <div class="col-sm">
           <div class="form-group field-city mb-3">
-            <label class="control-label" for="city">Город</label>
             <div>
-              <input type="text" id="city" class="form-control" name="city">
+              <input type="text" id="city" class="form-control" name="city" placeholder="Город">
             </div>
             <div class="help-block"></div>
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group field-total_salary mb-3">
-            <label class="control-label" for="total_salary">Заработная плата</label>
-            <input type="text" id="total_salary" class="form-control" name="total_salary" placeholder="От">
+            <input type="text" id="total_salary" class="form-control" name="total_salary" placeholder="Заработная плата">
             <div class="help-block"></div>
           </div>
         </div>
         <div class="px-1">
           <div class="form-group mb-3">
-            <label class="contol-label">&nbsp;</label>
-            <button type="submit" class="btn btn-primary col">Искать</button>
+            <button type="submit" class="btn btn-black col">Искать</button>
           </div>
         </div>
       </div>

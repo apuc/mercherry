@@ -34,10 +34,25 @@
     <a class="btn btn-purple my-3" href="#" data-toggle="modal" data-target="#responseModal">Откликнуться</a>
     <div class="mb-4">
       <div class="row">
-        <div class="col-xl-6 mb-1" v-for="(value, key, index) in vacancyData">
+        <div class="col-xl-6 mb-1"
+             v-for="(value, key) in vacancyDataName"
+
+        >
           <div class="row">
-            <div class="col-6 c-dark-gray">{{vacancyDataName[key]}}:</div>
-            <div class="col-6">{{value}}</div>
+            <div class="col-6 c-dark-gray">{{value}}:</div>
+            <div class="col-6">
+              <template v-if="typeof info[key] === 'boolean'">
+                <template v-if="info[key] === true">
+                  Да
+                </template>
+                <template v-else>
+                  Нет
+                </template>
+              </template>
+              <template v-else>
+                {{info[key]}}
+              </template>
+            </div>
           </div>
         </div>
       </div>
@@ -63,37 +78,29 @@
 <script>
   export default {
     name: "VacancyDesc",
+    props: [
+      'info'
+    ],
     data() {
       return {
-        vacancyData: {
-          vacancy_type: 'Мерчендайзинг визитный',
-          vacancy_duration: '3 дня',
-          vacancy_product: 'Бытовая химия и уборка',
-          vacancy_salary : '20000',
-          vacancy_employment: 'Полная занятость',
-          vacancy_prize : '7000',
-          vacancy_schedule: '09:00-18:00',
-          vacancy_weekend : 'сб.вс',
-          vacancy_dots: '65',
-          vacancy_medicine: 'Да',
-          vacancy_in_day: '8',
-          vacancy_pda : 'Нет',
-          vacancy_experience: 'Опыт не менее 1 года'
-        },
         vacancyDataName: {
-          vacancy_type: 'Тип вакансии',
-          vacancy_product: 'Тип продукта',
-          vacancy_employment: 'Занятость',
-          vacancy_schedule: 'График работы',
-          vacancy_dots: 'Количество точек',
-          vacancy_in_day: 'Количество точек в день',
-          vacancy_experience: 'Опыт работы',
-          vacancy_duration: 'Стажировка',
-          vacancy_salary : 'Оклад',
-          vacancy_prize : 'Премия',
-          vacancy_weekend : 'Выходные',
-          vacancy_medicine: 'Медицинская книжка',
-          vacancy_pda : 'КПК (мобильный телефон)'
+          type: 'Тип вакансии',
+          point_count: 'Количество точек',
+          project: 'Проект',
+          experience: 'Опыт работы',
+          product_type: 'Тип продукта',
+          duration_internship: 'Стажировка',
+          employment: 'Занятость',
+          schedule: 'График работы',
+          point_count_day: 'Количество точек в день',
+          total_salary: 'Заработная плата',
+          salary : 'Оклад',
+          prize : 'Премия',
+          weekend : 'Выходные',
+          m_book: 'Медицинская книжка',
+          mobile : 'КПК (мобильный телефон)',
+          auto: 'Наличие автомобиля',
+          audio_record: 'Аудиозапись'
         },
         vacancyDesc: {
           price: 'от 60 000 до 60 000 руб. на руки ',

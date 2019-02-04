@@ -3148,6 +3148,9 @@ input[type="radio"], input[type="checkbox"] {
 .ff-sans-pro {
     font-family: 'Source Sans Pro', sans-serif;
 }
+.c-black {
+    color: #000;
+}
 .c-gray {
     color: #ccc
 }

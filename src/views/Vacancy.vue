@@ -5,7 +5,11 @@
           :coords="[54.62896654088406, 39.731893822753904]"
           zoom="10"
           style="width: 100%; height: 250px"
-          :controls="['zoomControl', 'typeSelector',  'fullscreenControl', 'routeButtonControl']"
+          :controls="[
+          'zoomControl',
+          'typeSelector',
+          'fullscreenControl'
+          ]"
           :cluster-options="{
             1: {clusterDisableClickZoom: true}
           }"
@@ -24,28 +28,37 @@
 
 
       </yandex-map>
+      <!--<button type="button" @click="getGeo">asdasasd</button>-->
 
       <div class="container pt-3">
         <div class="row justify-content-center align-items-end mb-0">
           <div class="col-md-10">
             <div class="align-items-center">
-              <VacancyDesc/>
+              <VacancyDesc
+                  :info="info"
+              />
               <VacancySimilar/>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <VacancyModal/>
   </main>
 </template>
 
 <script>
   import VacancyDesc from "../components/vacancy/VacancyDesc";
   import VacancySimilar from "../components/vacancy/VacancySimilar";
+  import VacancyModal from "../components/vacancy/VacancyModal";
+  import {mapGetters} from "vuex";
 
   export default {
     name: "Vacancy",
-    components: {VacancySimilar, VacancyDesc},
+    components: {VacancyModal, VacancySimilar, VacancyDesc},
+    props: [
+      'id'
+    ],
     data() {
       return {
         placemarks: [
@@ -60,7 +73,12 @@
               }
             }
           }
-        ]
+        ],
+      }
+    },
+    computed: {
+      info() {
+        return this.$store.getters.vacancyInfo(parseInt(this.id));
       }
     }
   }

@@ -45,6 +45,7 @@ export default new Router({
       path: '/job/:id',
       name: 'vacancy',
       component: Vacancy,
+      props: true
     },
     {
       path: '/policy',

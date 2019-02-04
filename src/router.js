@@ -7,6 +7,7 @@ import Vacancy from "./views/Vacancy";
 import Policy from "./views/Policy";
 import Contacts from "./views/Contacts";
 import Profile from "./views/Profile";
+import Password from "./views/Password";
 
 Vue.use(Router);
 
@@ -57,6 +58,12 @@ export default new Router({
       name: 'profile',
       meta: {layout: 'profile'},
       component: Profile
+    },
+    {
+      path: '/password-reset',
+      name: 'password-reset',
+      meta: {layout: 'auth'},
+      component: Password
     }
   ]
 })

@@ -33,7 +33,7 @@
 
           <button type="submit" class="btn btn-primary btn-block mb-2">Войти</button>
         </form>
-        <router-link class="text-muted" to="/">Восстановить пароль</router-link>
+        <router-link class="text-muted" to="/password-reset">Восстановить пароль</router-link>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <section class="login-wrap p-0">
-    <div class="image image-overlay" style="background-image: url('img/bg.jpg')"></div>
+    <div class="image image-overlay" style="background-image: url('/img/bg.jpg')"></div>
     <div class="container">
       <div class="row justify-content-center align-items-center vh-100">
         <div class="col-md-6 col-lg-5 pt-10 pb-5">
@@ -362,7 +362,7 @@
     transform: rotate(45deg);
   }
   .accordion-group-portal .accordion-control {
-    padding: 2.625rem 2.625rem 2rem;
+    padding: 2.625rem 2.625rem;
   }
   .accordion-group-portal .accordion-control::after {
     content: "\f067";

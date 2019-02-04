@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <Header :color="'dark'" :headerClass="'header-sticky header-dark fixed-top'" />
-    <LoginMain/>
-  </div>
+  <LoginMain/>
 </template>
 
 <script>

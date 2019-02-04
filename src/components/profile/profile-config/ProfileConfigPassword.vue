@@ -10,7 +10,7 @@
               <input type="password"
                      id="passwordform-password"
                      class="form-control"
-                     v-validate="'required|min:6|verify_password'"
+                     v-validate="'required|verify_password'"
                      ref="password"
                      name="password"
               >

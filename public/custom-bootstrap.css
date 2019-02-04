@@ -2733,7 +2733,7 @@ label {
     padding: 7px 20px 8px;
     color: #151515;
     border: 1px solid #d4d7da;
-    border-radius: 2em;
+    border-radius: 1em;
 }
 .form-control:focus {
     color: #151515;

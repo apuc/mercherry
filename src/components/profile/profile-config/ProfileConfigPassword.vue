@@ -10,11 +10,13 @@
               <input type="password"
                      id="passwordform-password"
                      class="form-control"
-                     v-validate="'required'"
+                     v-validate="'required|min:6|verify_password'"
                      ref="password"
                      name="password"
               >
-              <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
+              <span v-show="errors.has('password')" class="help is-danger">
+                {{errors.first('password')}}
+              </span>
             </div>
           </div>
 
@@ -28,7 +30,9 @@
                      data-vv-as="password"
                      name="password_confirmation"
               >
-              <span v-show="errors.has('password_confirmation')" class="help is-danger">{{ errors.first('password_confirmation') }}</span>
+              <span v-show="errors.has('password_confirmation') && this.fields.password_confirmation.dirty" class="help is-danger">
+                {{errors.first('password_confirmation')}}
+              </span>
             </div>
           </div>
         </div>

@@ -47,6 +47,7 @@
                    ref="city"
                    v-validate="'required|alpha'"
                    v-model="city.name"
+                   autocomplete="off"
             >
 
             <ul class="dropdown-input" v-if="city.name.length > 0">
@@ -64,6 +65,7 @@
                  class="form-control"
                  placeholder="Введите название района"
                  v-model="city.district"
+                 autocomplete="off"
           >
 
           <ul class="dropdown-input" v-if="district.name.length > 0">

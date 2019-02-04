@@ -63,14 +63,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 120px;
+    width: 130px;
     margin-left: auto;
     @media (max-width: 575px) {
       width: 100%;
       margin-top: 10px;
     }
     .btn {
-      width: 120px;
+      width: 130px;
     }
   }
 </style>

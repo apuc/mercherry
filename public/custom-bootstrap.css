@@ -227,7 +227,7 @@ selectric-items, .container .swiper-container .swiper-slide, .container .gallery
     min-width: 160px;
     font-size: 15px;
     line-height: 1.5;
-    border-radius: 50px;
+    border-radius: 1rem;
     text-transform: uppercase;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     letter-spacing: 0;

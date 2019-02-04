@@ -88,7 +88,7 @@
           vacancy_dots: 'Количество точек',
           vacancy_in_day: 'Количество точек в день',
           vacancy_experience: 'Опыт работы',
-          vacancy_duration: 'Длительность стажировки',
+          vacancy_duration: 'Стажировка',
           vacancy_salary : 'Оклад',
           vacancy_prize : 'Премия',
           vacancy_weekend : 'Выходные',

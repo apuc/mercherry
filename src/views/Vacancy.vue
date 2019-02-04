@@ -5,6 +5,7 @@
           :coords="[54.62896654088406, 39.731893822753904]"
           zoom="10"
           style="width: 100%; height: 250px"
+          :controls="['zoomControl', 'typeSelector',  'fullscreenControl', 'routeButtonControl']"
           :cluster-options="{
             1: {clusterDisableClickZoom: true}
           }"

@@ -3034,8 +3034,8 @@ input[type="radio"], input[type="checkbox"] {
 }
 .alert-warning {
     color: #524514;
-    background-color: #ecd478;
-    border-color: #f7edc7;
+    background-color: #fff7dd;
+    border-color: #fff1c9;
 }
 .pagination {
     display: flex;

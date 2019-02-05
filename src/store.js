@@ -208,7 +208,12 @@ export default new Vuex.Store({
           "q2": "Вы уверены что вас устраивает заработная плата (#ЗП)?"
         }
       }
-    ]
+    ],
+    user: {
+      city: {
+        name: ''
+      }
+    }
   },
   getters: {
     firstVacancies: state => state.vacancies.filter((vacancy, index) => index < 3),

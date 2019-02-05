@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="col">
+          <div class="col-sm-6">
             <div class="form-group field-profileform-email">
               <label class="control-label" for="profileform-email">Email</label>
               <input type="text"
@@ -47,11 +47,9 @@
               <div v-show="emailFlags.invalid && emailFlags.dirty">Значение «Email» не является правильным email адресом.</div>
             </div>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="col">
+          <div class="col-sm-6">
             <div class="form-group field-profileform-phone">
-              <label class="control-label" for="profileform-phone">Номер мобильного телефона (номер телефона агента)</label>
+              <label class="control-label" for="profileform-phone">Телефон агента</label>
               <input type="text" id="profileform-phone" class="form-control" v-mask="'8(###)###-##-##'" v-model="phone" placeholder="8(___)___-__-__">
             </div>
           </div>

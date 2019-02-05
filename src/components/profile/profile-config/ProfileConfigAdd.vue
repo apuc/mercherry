@@ -39,18 +39,20 @@
         </div>
         <div class="form-group">
           <label class="control-label" for="advancedprofileform-city">Город</label>
-          <div class="dropdown-input-wrap">
+          <div class="position-relative">
             <input type="text"
                    id="advancedprofileform-city"
                    class="form-control"
                    name="city"
                    ref="city"
                    v-validate="'required|alpha'"
-                   v-model="city.name"
+                   v-model="user.city.name"
                    autocomplete="off"
+                   @focus="city.focused = true"
+                   @blur="city.focused = false"
             >
 
-            <ul class="dropdown-input" v-if="city.name.length > 0">
+            <ul class="dropdown-input" v-if="user.city.name.length > 0 && city.focused">
               <li v-for="dropdownItem in city.dropdownValue">
                 {{dropdownItem}}
               </li>
@@ -60,19 +62,23 @@
 
         <div class="form-group mb-4">
           <label class="control-label" for="dt-add">Район</label>
-          <input type="text"
-                 id="dt-add"
-                 class="form-control"
-                 placeholder="Введите название района"
-                 v-model="city.district"
-                 autocomplete="off"
-          >
+          <div class="position-relative">
+            <input type="text"
+                   id="dt-add"
+                   class="form-control"
+                   placeholder="Введите название района"
+                   v-model="district.name"
+                   autocomplete="off"
+                   @focus="district.focused = true"
+                   @blur="district.focused = false"
+            >
 
-          <ul class="dropdown-input" v-if="district.name.length > 0">
-            <li v-for="dropdownItem in district.dropdownValue">
-              {{dropdownItem}}
-            </li>
-          </ul>
+            <ul class="dropdown-input" v-if="district.name.length > 0 && district.focused">
+              <li v-for="dropdownItem in district.dropdownValue">
+                {{dropdownItem}}
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="alert alert-warning mb-2">
           Указывайте магазины в которых вы уже работаете. Мы покажем ваш отклик работодателю в числе
@@ -105,12 +111,15 @@
 
 <script>
   import { mapFields } from 'vee-validate';
+  import cityMixin from '../../../cityMixin'
+  import {mapState} from 'vuex';
 
   export default {
     name: "ProfileConfigAdd",
     data() {
       return {
         city: {
+          focused: false,
           name: '',
           dropdownValue: [
             '1',
@@ -121,6 +130,7 @@
           ],
         },
         district: {
+          focused: false,
           name: '',
           dropdownValue: [
             '1',
@@ -158,6 +168,9 @@
     computed: {
       ...mapFields({
         cityFlags: 'city'
+      }),
+      ...mapState({
+        user: "user"
       })
     },
     watch: {
@@ -167,7 +180,8 @@
       district(value) {
         this.districtRequest();
       }
-    }
+    },
+    mixins: [cityMixin]
   }
 </script>
 
@@ -196,9 +210,6 @@
       &:hover {
         background-color: #f5f5f5;
       }
-    }
-    &-wrap {
-      position: relative;
     }
   }
 </style>

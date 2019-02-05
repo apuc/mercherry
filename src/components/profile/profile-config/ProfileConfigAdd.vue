@@ -7,7 +7,7 @@
           Выбирайте какие вакансии вас интересуют и мы будем информировать вас о новых вакансиях.
         </div>
         <div class="form-group mb-2">
-          <label class="control-label">Интересующий тип вакансии</label>
+          <h3 class="mb-2 fs-22 font-weight-normal">Интересующий тип вакансии</h3>
           <div>
             <label class="checkbox mr-2">
               <input type="checkbox">

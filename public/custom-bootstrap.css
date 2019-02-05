@@ -2735,6 +2735,9 @@ label {
     border: 1px solid #d4d7da;
     border-radius: 1em;
 }
+.form-control::placeholder {
+    font-size: 14px;
+}
 .form-control:focus {
     color: #151515;
     background-color: #fff;

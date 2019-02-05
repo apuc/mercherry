@@ -52,7 +52,7 @@
             href: 'extra-income'
           },
           {
-            title: 'Основной заработок',
+            title: 'Разовые задания',
             href: 'onetime-income'
           }
         ],

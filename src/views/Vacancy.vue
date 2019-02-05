@@ -14,6 +14,7 @@
             1: {clusterDisableClickZoom: true}
           }"
           :placemarks="placemarks"
+          :behaviors="['disable(\'scrollZoom\')']"
       >
 
         <ymap-marker
@@ -28,8 +29,6 @@
 
 
       </yandex-map>
-      <!--<button type="button" @click="getGeo">asdasasd</button>-->
-
       <div class="container pt-3">
         <div class="row justify-content-center align-items-end mb-0">
           <div class="col-md-10">

@@ -1,10 +1,10 @@
 <template>
-  <section class="contacts bg-light">
+  <section class="contacts">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col text-center">
               <h2>Связаться с нами</h2>
             </div>
           </div>
@@ -23,7 +23,7 @@
                           v-model="name"
                           v-validate="'required|alpha'"
                       >
-                      <p class="text-danger" v-show="!nameFlags.valid && nameFlags.touched">Необходимо заполнить «Имя».</p>
+                      <p class="text-danger" v-show="!nameFlags.valid && nameFlags.touched">Заполните «Имя».</p>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -37,7 +37,7 @@
                           v-model="email"
                           v-validate="'required|email'"
                       >
-                      <p class="text-danger" v-show="emailFlags.invalid && emailFlags.touched && !emailFlags.dirty">Необходимо заполнить «Email.</p>
+                      <p class="text-danger" v-show="emailFlags.invalid && emailFlags.touched && !emailFlags.dirty">Заполните «Email.</p>
                       <p class="text-danger" v-show="emailFlags.invalid && emailFlags.dirty">Значение «Email» не является правильным email адресом.</p>
                     </div>
                   </div>
@@ -55,7 +55,7 @@
                                 v-validate="'required|alpha'"
                       >
                       </textarea>
-                      <p class="text-danger" v-show="!textareaFlags.valid && textareaFlags.touched">Необходимо заполнить «Сообщение».</p>
+                      <p class="text-danger" v-show="!textareaFlags.valid && textareaFlags.touched">Заполните «Сообщение».</p>
                     </div>
                   </div>
                 </div>

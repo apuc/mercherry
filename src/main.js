@@ -33,9 +33,9 @@ Vue.use(VeeValidate, {
 });
 
 Validator.extend('verify_password', {
-  getMessage: field => 'Пароль должен содержать хотя бы одну строчную букву, одну заглавную и одно число. Минимум 6 символов.',
+  getMessage: field => 'Минимум 6 символов.',
   validate: value => {
-    var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
+    var strongRegex = new RegExp("^(?=.{6,})");
     return strongRegex.test(value);
   }
 });
@@ -53,7 +53,7 @@ Validator.extend('verify_email_phone', {
 const dictionary = {
   ru: {
     messages: {
-      verify_password: () => 'Пароль должен содержать хотя бы одну строчную букву, одну заглавную, одно число. Минимум 6 символов.',
+      verify_password: () => 'Минимум 6 символов.',
       _default: () => "Необходимо заполнить поле.",
       confirmed: () => 'Пароли не совпадают'
     }

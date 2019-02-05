@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-xl-6 mb-1"
              v-for="(value, key) in vacancyDataName"
-
+             v-if="info[key] !== ''"
         >
           <div class="row">
             <div class="col-6 c-dark-gray">{{value}}:</div>

@@ -2730,7 +2730,7 @@ label {
 }
 .form-control {
     height: 46px;
-    padding: 7px 20px 8px;
+    padding: 10px 20px 11px;
     color: #151515;
     border: 1px solid #d4d7da;
     border-radius: 1em;
@@ -3168,6 +3168,12 @@ input[type="radio"], input[type="checkbox"] {
 }
 .lh-1 {
     line-height: 1;
+}
+.lh-1_2 {
+    line-height: 1.2;
+}
+.text-transform-none {
+    text-transform: none;
 }
 .table {
     table-layout: fixed;

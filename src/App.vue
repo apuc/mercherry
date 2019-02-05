@@ -106,10 +106,15 @@
       top: 0;
       left: 0;
       opacity: 0;
-      &:checked + .radio__circle,
-      &:checked + .checkbox__circle {
-        &:after {
-          opacity: 1;
+      &:checked {
+        &+ .radio__circle,
+        &+ .checkbox__circle {
+          &:after {
+            opacity: 1;
+          }
+        }
+        &+span + span {
+          color: #232323;
         }
       }
     }

@@ -38,7 +38,13 @@
     },
     data() {
       return {
-        currentPage: 1
+        currentPage: 1,
+        searchParams: {
+          page: 0,
+          employment: 0,
+          city: '',
+          total_salary: 0
+        }
       }
     },
     components: {JobPagination, VacancyItem, JobForm},

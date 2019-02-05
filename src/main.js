@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import store from './store';
+import store from './store/store';
 import './registerServiceWorker';
 import VeeValidate from "vee-validate";
 import {Validator} from 'vee-validate';
@@ -11,6 +11,7 @@ import ProfileLayout from './views/Layouts/ProfileLayout';
 import JobLayout from './views/Layouts/JobLayout';
 import YmapPlugin from 'vue-yandex-maps'
 import {VueMaskDirective} from 'v-mask'
+import VueResource from 'vue-resource'
 
 const options = { // you may define your apiKey, lang and version or skip this.
   apiKey: 'xxx', // '' by default
@@ -20,6 +21,7 @@ const options = { // you may define your apiKey, lang and version or skip this.
 
 
 Vue.use(YmapPlugin, options);
+Vue.use(VueResource);
 Vue.directive('mask', VueMaskDirective);
 
 Vue.component('main-layout', MainLayout);
@@ -68,5 +70,11 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  http: {
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    }
+  },
   render: h => h(App)
 }).$mount('#app');

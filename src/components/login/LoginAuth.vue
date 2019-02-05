@@ -41,6 +41,8 @@
 
 <script>
   import { mapFields } from 'vee-validate';
+  import { mapActions } from 'vuex';
+
   export default {
     name: "LoginAuth",
     data() {
@@ -67,6 +69,9 @@
           alert('Correct them errors!');
         });
       },
+      ...mapActions({
+        LOGIN: 'auth/LOGIN'
+      }),
     }
   }
 </script>

@@ -56,7 +56,7 @@
               <p class="text-danger" v-show="errors.has('checkbox')">Вам необходимо согласиться с правилами сайта</p>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+          <button type="submit" class="btn btn-primary btn-block" @click="register">Зарегистрироваться</button>
         </form>
       </div>
     </div>
@@ -65,6 +65,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
+  import { mapActions } from 'vuex';
 
   export default {
     name: "LoginReg",
@@ -81,7 +82,7 @@
         loginFlags: 'login',
         emailFlags: 'email',
         passwordFlags: 'password',
-      }),
+      })
     },
     methods: {
       validateBeforeSubmit() {
@@ -95,6 +96,16 @@
           alert('Correct them errors!');
         });
       },
+      ...mapActions({
+        REGISTRATION: 'auth/REGISTRATION'
+      }),
+      register() {
+        this.REGISTRATION({
+          username: this.login,
+          email: this.email,
+          password: this.password
+        })
+      }
     }
   }
 </script>

@@ -76,8 +76,11 @@
       }
     },
     computed: {
+      ...mapGetters({
+        vacancyInfo: 'old/vacancyInfo'
+      }),
       info() {
-        return this.$store.getters.vacancyInfo(parseInt(this.id));
+        return this.vacancyInfo(parseInt(this.id));
       }
     }
   }

@@ -31,7 +31,7 @@
             >
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block mb-2">Войти</button>
+          <button type="submit" class="btn btn-primary btn-block mb-2" @click="enter">Войти</button>
         </form>
         <router-link class="text-muted" to="/password-reset">Восстановить пароль</router-link>
       </div>
@@ -72,6 +72,12 @@
       ...mapActions({
         LOGIN: 'auth/LOGIN'
       }),
+      enter() {
+        this.LOGIN({
+          login: this.login,
+          password: this.password
+        })
+      }
     }
   }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <li class="media bordered mb-2 p-3 bg-white">
     <div class="media-body">
-      <div class="d-flex flex-wrap flex-sm-row flex-column">
+      <div class="d-flex flex-wrap flex-sm-nowrap flex-sm-row flex-column">
         <div class="pr-2 d-flex flex-column">
           <h5 class="mt-0 mb-0">
             <router-link class="c-dark-link" :to="`/job/${item.id}`">{{item.label}}</router-link>
@@ -25,8 +25,8 @@
         <div class="vacancy-item-right">
           <span v-if="item.employment !== ''" class="btn btn-small pointer-none" :class="'btn-' + employment">{{item.employment}}</span>
 
-          <p class="mt-2 mb-0 c-medium-gray lh-1" v-if="item.salary != ''">
-            {{item.salary}}₽
+          <p class="mt-2 mb-0 c-medium-gray lh-1" v-if="item.total_salary != ''">
+            {{item.total_salary}}₽
           </p>
         </div>
       </div>

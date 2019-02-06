@@ -23,7 +23,7 @@
     name: "VacancySimilar",
     computed: {
       ...mapGetters({
-        firstVacancies: 'firstVacancies'
+        firstVacancies: 'old/firstVacancies'
       })
     },
     components: {VacancyItem}

@@ -75,6 +75,11 @@
     color: #000;
     font-weight: 700;
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   [class*="separator"][class*="-top"] {
     border-top-width: 1px;
   }
@@ -101,6 +106,7 @@
   .checkbox {
     position: relative;
     display: inline-flex;
+    cursor: pointer;
     input {
       position: absolute;
       top: 0;

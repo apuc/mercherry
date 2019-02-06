@@ -23,14 +23,17 @@
 </template>
 
 <script>
+
   export default {
     name: "JobPagination",
-    props: [
-      'currentPage'
-    ],
-    data() {
-      return {
-        pages: [1,2,3],
+    props: {
+      currentPage: {
+        type: Number,
+        required: true
+      },
+      pages: {
+        type: Array,
+        required: false
       }
     },
     computed: {
@@ -39,15 +42,7 @@
       },
       nextPage() {
         return this.currentPage + 1 + '';
-      }
-    },
-    beforeRouteEnter (to, from, next) {
-      next(vm => {
-        if (to.params.id !== undefined) {
-          vm.currentPage = to.params.id;
-        }
-        console.log(vm.currentPage)
-      })
+      },
     }
   }
 </script>

@@ -42,7 +42,7 @@
         </div>
       </div>
     </section>
-    <VacancyModal/>
+    <VacancyModal :info="info"/>
   </main>
 </template>
 
@@ -50,7 +50,7 @@
   import VacancyDesc from "../components/vacancy/VacancyDesc";
   import VacancySimilar from "../components/vacancy/VacancySimilar";
   import VacancyModal from "../components/vacancy/VacancyModal";
-  import {mapGetters} from "vuex";
+  import {mapGetters, mapActions} from "vuex";
 
   export default {
     name: "Vacancy",
@@ -77,11 +77,19 @@
     },
     computed: {
       ...mapGetters({
-        vacancyInfo: 'old/vacancyInfo'
+        vacancyInfo: 'vacancy/vacancyInfo'
       }),
       info() {
-        return this.vacancyInfo(parseInt(this.id));
+        return this.vacancyInfo;
       }
+    },
+    methods: {
+      ...mapActions({
+        getVacancyInfo: 'vacancy/GET_VACANCY_INFO'
+      })
+    },
+    created() {
+      this.getVacancyInfo(this.id);
     }
   }
 </script>

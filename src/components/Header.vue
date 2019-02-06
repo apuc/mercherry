@@ -20,7 +20,71 @@
               <router-link class="nav-link" to="/contacts">Написать нам</router-link>
             </li>
           </ul>
-          <ul class="navbar-nav align-items-center mr-0">
+          <ul class="navbar-nav align-items-center mr-0" v-if="enter">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle no-cursor" href="#" data-toggle="dropdown">
+                <i class="fa fa-lg fa-bell-o active"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
+                <router-link class="dropdown-item" to="/">
+                  <p class="mb-0 font-weight-normal float-left">У вас 4 непрочитанных уведомлений</p>
+                  <span class="badge badge-pill badge-success float-right">Показать всё</span>
+                </router-link>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="fa fa-info mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-medium">Тест 1</h6>
+                    <p class="font-weight-light small-text mb-0">
+                      2 месяца  назад
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="fa fa-info mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-medium">Тест 2</h6>
+                    <p class="font-weight-light small-text mb-0">
+                      2 месяца  назад
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="fa fa-info mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-medium">Тест 3</h6>
+                    <p class="font-weight-light small-text mb-0">
+                      2 месяца  назад
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">
+                <i class="fa fa-lg fa-envelope-o"></i>
+              </router-link>
+            </li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">apuc</a>
+              <div class="dropdown-menu">
+                <router-link class="dropdown-item" to="/profile">Профиль</router-link>
+                <router-link class="dropdown-item" @click.native="logOut()" to="/login">Выход</router-link>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav align-items-center mr-0" v-else>
             <li class="nav-item">
               <router-link class="nav-link" to="/login">Вход / Регистрация</router-link>
             </li>
@@ -34,10 +98,28 @@
 <script>
   export default {
     name: "Header",
+    data() {
+      return {
+        enter: false
+      }
+    },
     props: [
       'color',
       'headerClass'
-    ]
+    ],
+    methods: {
+      logOut() {
+        localStorage.clear();
+      }
+    },
+    created() {
+      if (localStorage.token !== '' && localStorage.token !== undefined) {
+        this.enter = true;
+      }
+      else {
+        this.enter = false;
+      }
+    }
   }
 </script>
 

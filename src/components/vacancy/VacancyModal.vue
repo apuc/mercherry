@@ -9,37 +9,18 @@
               Перед передачей вашего отклика работодателю, давайте ещё раз проверим, что вакансия вам
               подходит. Ответьте пожалуйста на вопросы:
             </p>
-            <div class="form-group mb-1">
+            <div class="form-group mb-1" v-for="(question, index) in info.questions">
               <label class="control-label c-dark-gray">
-                Вы уверены что вам будет удобно работать на территории?
-                <span class="d-block  my-1">(Москва)</span>
+                {{question}}
               </label>
               <div>
                 <label class="radio mr-2 c-dark-gray">
-                  <input type="radio" name="ResponseForm[q0]" value="1">
+                  <input type="radio" :name="`ResponseForm[${index}]`" value="1">
                   <span class="radio__circle"></span>
                   <span>Да</span>
                 </label>
                 <label class="radio c-dark-gray">
-                  <input type="radio" name="ResponseForm[q0]" value="0">
-                  <span class="radio__circle"></span>
-                  <span>Нет</span>
-                </label>
-              </div>
-            </div>
-            <div class="form-group mb-1">
-              <label class="control-label c-dark-gray">
-                Вы уверены что вас устраивает заработная плата?
-                <span class="d-block my-1">(35000)</span>
-              </label>
-              <div>
-                <label class="radio mr-2 c-dark-gray">
-                  <input type="radio" name="ResponseForm[q1]" value="1">
-                  <span class="radio__circle"></span>
-                  <span>Да</span>
-                </label>
-                <label class="radio c-dark-gray">
-                  <input type="radio" name="ResponseForm[q1]" value="0">
+                  <input type="radio" :name="`ResponseForm[${index}]`" value="0">
                   <span class="radio__circle"></span>
                   <span>Нет</span>
                 </label>
@@ -57,7 +38,13 @@
 
 <script>
   export default {
-    name: "VacancyModal"
+    name: "VacancyModal",
+    props: {
+      info: {
+        type: Object,
+        required: true
+      }
+    }
   }
 </script>
 

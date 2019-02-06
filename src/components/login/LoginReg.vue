@@ -8,27 +8,37 @@
       <div class="accordion-content-wrapper">
         <form @submit.prevent="validateBeforeSubmit">
           <div class="form-group field-signupform-username">
-            <label class="control-label" for="signupform-username">Псевдоним</label>
-            <input type="text"
-                   id="signupform-username"
-                   class="form-control"
-                   :class="{'is-valid':loginFlags.valid, 'is-invalid': errors.has('login') }"
-                   name="login"
-                   v-model="login"
-                   v-validate="'required|alpha'"
-            >
+            <label class="control-label d-block" for="signupform-username">
+              Псевдоним
+              <input type="text"
+                     id="signupform-username"
+                     class="form-control"
+                     :class="{'is-valid':loginFlags.valid, 'is-invalid': errors.has('login') }"
+                     name="login"
+                     v-model="login"
+                     v-validate="'required|alpha'"
+              >
+            </label>
+            <p class="text-danger" v-if="err.hasOwnProperty('username')">
+              {{err.username}}
+            </p>
           </div>
 
           <div class="form-group field-signupform-email">
-            <label class="control-label" for="signupform-email">Email</label>
-            <input type="text"
-                   id="signupform-email"
-                   class="form-control"
-                   :class="{'is-valid': emailFlags.valid, 'is-invalid': errors.has('email') }"
-                   name="email"
-                   v-model="email"
-                   v-validate="'required|email'"
-            >
+            <label class="control-label d-block" for="signupform-email">
+              Email
+              <input type="text"
+                     id="signupform-email"
+                     class="form-control"
+                     :class="{'is-valid': emailFlags.valid, 'is-invalid': errors.has('email') }"
+                     name="email"
+                     v-model="email"
+                     v-validate="'required|email'"
+              >
+            </label>
+            <p class="text-danger" v-if="err.hasOwnProperty('email')">
+              {{err.email}}
+            </p>
           </div>
 
           <div class="form-group field-signupform-password">
@@ -65,7 +75,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   export default {
     name: "LoginReg",
@@ -82,19 +92,14 @@
         loginFlags: 'login',
         emailFlags: 'email',
         passwordFlags: 'password',
+      }),
+      ...mapGetters({
+        err: 'auth/getRegErr'
       })
     },
     methods: {
       validateBeforeSubmit() {
-        this.$validator.validateAll().then((result) => {
-          if (result) {
-            // eslint-disable-next-line
-            alert('Form Submitted!');
-            return;
-          }
-
-          alert('Correct them errors!');
-        });
+        this.$validator.validateAll();
       },
       ...mapActions({
         REGISTRATION: 'auth/REGISTRATION'

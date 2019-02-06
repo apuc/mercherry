@@ -4,9 +4,9 @@
       <span>3 дня назад, 26 янв., 14:41</span>
     </div>
     <div class="d-flex flex-wrap align-items-center">
-      <h1 class="fs-34 font-weight-bold mb-1 pr-1">Супервайзер мерчендайзеров</h1>
+      <h1 class="fs-34 font-weight-bold mb-1 pr-1">{{info.label}}</h1>
       <div class="col-lg-3 ml-auto p-0">
-        <span class="font-weight-bold fs-30 ff-roboto">35 000 ₽</span>
+        <span class="font-weight-bold fs-30 ff-roboto">{{info.total_salary}}₽</span>
       </div>
     </div>
     <div class="d-flex flex-wrap align-items-center">
@@ -59,17 +59,7 @@
     </div>
     <div class="desc mb-3">
       <h3 class="fs-22 font-weight-normal mb-1">Описание:</h3>
-      <p>
-        <template v-for="(value, key, index) in vacancyDesc">
-          <template v-if="vacancyDescName[key] != undefined">
-            <br>
-            {{vacancyDescName[key]}}:
-            <br>
-          </template>
-          {{value}}
-          <br>
-        </template>
-      </p>
+      <p v-html="info.description"></p>
     </div>
     <a class="btn btn-purple mb-3" href="#" data-toggle="modal" data-target="#responseModal">Откликнуться</a>
   </div>
@@ -78,9 +68,12 @@
 <script>
   export default {
     name: "VacancyDesc",
-    props: [
-      'info'
-    ],
+    props: {
+      info: {
+        type: Object,
+        required: true
+      }
+    },
     data() {
       return {
         vacancyDataName: {

@@ -6,7 +6,7 @@
 
     <div id="collapseOne" class="accordion-content collapse show" data-parent=".accordion-group">
       <div class="accordion-content-wrapper">
-        <form>
+        <form @submit.prevent="validateBeforeSubmit">
           <div class="form-group field-loginform-login">
             <label class="control-label" for="loginform-login">Email или номер телефона</label>
             <input type="text"
@@ -20,17 +20,21 @@
           </div>
 
           <div class="form-group field-loginform-password">
-            <label class="control-label" for="loginform-password">Пароль</label>
-            <input type="password"
-                   id="loginform-password"
-                   class="form-control"
-                   :class="{'is-valid': passwordFlags.valid, 'is-invalid': errors.has('password') }"
-                   name="password"
-                   v-model="password"
-                   v-validate="'required|min:6|verify_password'"
-            >
+            <label class="control-label d-block" for="loginform-password">
+              Пароль
+              <input type="password"
+                     id="loginform-password"
+                     class="form-control"
+                     :class="{'is-valid': passwordFlags.valid, 'is-invalid': errors.has('password') }"
+                     name="password"
+                     v-model="password"
+                     v-validate="'required|min:6|verify_password'"
+              >
+            </label>
+            <p v-if="err.hasOwnProperty('password')" class="text-danger">
+              {{err.password}}
+            </p>
           </div>
-
           <button type="submit" class="btn btn-primary btn-block mb-2" @click="enter">Войти</button>
         </form>
         <router-link class="text-muted" to="/password-reset">Восстановить пароль</router-link>
@@ -41,7 +45,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   export default {
     name: "LoginAuth",
@@ -56,18 +60,13 @@
         loginFlags: 'login',
         passwordFlags: 'password',
       }),
+      ...mapGetters({
+        err: 'auth/getLoginErr'
+      })
     },
     methods: {
       validateBeforeSubmit() {
-        this.$validator.validateAll().then((result) => {
-          if (result) {
-            // eslint-disable-next-line
-            alert('Form Submitted!');
-            return;
-          }
-
-          alert('Correct them errors!');
-        });
+        this.$validator.validateAll();
       },
       ...mapActions({
         LOGIN: 'auth/LOGIN'

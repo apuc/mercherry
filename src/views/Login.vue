@@ -7,7 +7,7 @@
   import Header from "../components/Header";
   export default {
     name: "Login",
-    components: {Header, LoginMain}
+    components: {Header, LoginMain},
   }
 </script>
 

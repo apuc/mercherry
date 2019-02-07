@@ -2,7 +2,7 @@
   <div class="modal fade" id="responseModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <form>
+        <form @submit.prevent="sendResponse">
           <div class="modal-body text-center pb-0">
             <h3>Анкета</h3>
             <p class="lh-1_2">
@@ -15,12 +15,12 @@
               </label>
               <div>
                 <label class="radio mr-2 c-dark-gray">
-                  <input type="radio" :name="`ResponseForm[${index}]`" value="1">
+                  <input type="radio" :name="`ResponseForm[${index}]`" :value="1" v-model="inputsValues[index]">
                   <span class="radio__circle"></span>
                   <span>Да</span>
                 </label>
                 <label class="radio c-dark-gray">
-                  <input type="radio" :name="`ResponseForm[${index}]`" value="0">
+                  <input type="radio" :name="`ResponseForm[${index}]`" :value="0" v-model="inputsValues[index]">
                   <span class="radio__circle"></span>
                   <span>Нет</span>
                 </label>
@@ -37,12 +37,34 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
+
   export default {
     name: "VacancyModal",
+    data() {
+      return {
+        inputsValues: {}
+      }
+    },
     props: {
       info: {
         type: Object,
         required: true
+      },
+      id: {
+        type: String,
+        required: true
+      }
+    },
+    methods: {
+      ...mapActions({
+        responseVacancy: 'response/RESPONSE_VACANCY'
+      }),
+      sendResponse() {
+        this.responseVacancy({
+          answer: this.inputsValues,
+          id: this.id
+        });
       }
     }
   }

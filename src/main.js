@@ -9,9 +9,9 @@ import MainLayout from './views/Layouts/MainLayout';
 import AuthLayout from './views/Layouts/AuthLayout';
 import ProfileLayout from './views/Layouts/ProfileLayout';
 import JobLayout from './views/Layouts/JobLayout';
-import YmapPlugin from 'vue-yandex-maps'
-import {VueMaskDirective} from 'v-mask'
-import VueResource from 'vue-resource'
+import YmapPlugin from 'vue-yandex-maps';
+import {VueMaskDirective} from 'v-mask';
+import VueResource from 'vue-resource';
 
 const options = { // you may define your apiKey, lang and version or skip this.
   apiKey: 'xxx', // '' by default
@@ -51,7 +51,6 @@ Validator.extend('verify_email_phone', {
   }
 });
 
-
 const dictionary = {
   ru: {
     messages: {
@@ -66,6 +65,23 @@ const validator = new Validator({password: 'verify_password'});
 validator.localize('ru', dictionary.ru);
 
 Vue.config.productionTip = false;
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.layout === 'auth' && localStorage.getItem('token')
+      || to.path === '/profile' && !localStorage.getItem('token')) {
+    next({name: 'home'})
+  }
+  else {
+    next();
+  }
+});
+
+// const token = localStorage.getItem('token');
+// if (token) {
+//   console.log(token);
+//   Vue.http.headers.common['Authorization'] = `Bearer ${token}`;
+// }
+
 
 new Vue({
   router,

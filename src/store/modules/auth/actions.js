@@ -7,10 +7,10 @@ export default {
         (res) => {
           Vue.http.headers.common['Authorization'] = `Bearer ${res.body.token}`;
           localStorage.setItem('token', res.body.token);
-          return res
+          return res;
         },
         (err) => {
-          return err
+          return err;
         }
       )
       .catch(err => console.error(`catch, ${err}`));
@@ -21,10 +21,10 @@ export default {
       .then(
         (res) => {
           localStorage.setItem('token', res.body.token);
-          return res
+          return res;
         },
         (err) => {
-          return err
+          return err;
         }
       )
       .catch(err => console.error(`catch, ${err}`));

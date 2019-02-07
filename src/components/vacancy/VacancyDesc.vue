@@ -1,5 +1,17 @@
 <template>
   <div>
+    <div class="status-response">
+      <div class="status-response__items">
+        <div class="status-response__item" v-for="item in responseSteps">
+          <span>{{item.name}}</span>
+          <div class="status-response__circle" :class="item.status ? 'status-response__circle--active' : ''">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="green-border p-3 mb-5">
+      Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
+    </div>
     <div class="c-gray fs-14 mb-1">
       <span>3 дня назад, 26 янв., 14:41</span>
     </div>
@@ -77,6 +89,19 @@
     },
     data() {
       return {
+        responseSteps: [
+          {
+            name: 'Отклик',
+            status: false
+          },
+          {
+            name: 'Собеседование',
+            status: false
+          },{
+            name: 'Выход в торговую точку',
+            status: false
+          }
+        ],
         vacancyDataName: {
           type: 'Тип вакансии',
           point_count: 'Количество точек',
@@ -95,18 +120,6 @@
           mobile : 'КПК (мобильный телефон)',
           auto: 'Наличие автомобиля',
           audio_record: 'Аудиозапись'
-        },
-        vacancyDesc: {
-          price: 'от 60 000 до 60 000 руб. на руки ',
-          short_desc: 'В крупной компании (напитки) открыта вакансия супервайзер мерчендайзеров.',
-          charge: 'Организация и контроль работы мерчендайзеров в супермаркетах и дискаунтерах (Пятерочка, Перекресток, Магнит, Дикси), Управление командой мерчендайзеров, Контроль мерчендайзинга в ТТ, Проведение отчетных собраний, Проведение полевого обучения персонала, Контроль соблюдения матрицы в торговых точках, Взаимодействие с администрацией торговых точек, Работа по увеличению представленности продукции компании в торговых точках, Выявление и реализации возможностей по увеличению объемов продаж, Выполнение показателей по продажам, Обеспечение своевременного размещения POSm-оборудования с целью, Эффективного продвижения продукции',
-          requirements: 'Высокий уровень обучаемости, стрессоустойчивость, Способность работать в режиме многозадачности, Знание основ мерчендайзинга, Опыт работы с федеральными и локальными сетями, Уверенный пользователь ПК (Excel, PowerPoint), Активность, конструктивная грамотная речь, Наличие автомобиля, РАССМАТРИВАЮТСЯ КАНДИДАТЫ ТОЛЬКО С ОПЫТОМ РАБОТЫ НА АНАЛОГИЧНОЙ ДОЛЖНОСТИ!',
-          conditions: 'График работы 5/2 с 9 до 18, выходные СБ и ВС, В команде 15-20 МЧ, ЗП 50000 + 10000 компенсация ГСМ, Оформление ТК РФ, Работа разъездного характера, Свободные территории: Колпино, Волхов, Рыбацкое'
-        },
-        vacancyDescName: {
-          charge: 'Обязанности',
-          requirements: 'Требования',
-          conditions: 'Условия'
         }
       }
     }
@@ -114,6 +127,26 @@
 </script>
 
 <style lang="scss">
+  .status-response {
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &s {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__circle {
+      width: 20px;
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 50%;
+      &--active {
+        background-color: #54af5d;
+      }
+    }
+  }
   .three-circle {
     display: inline-flex;
     margin-right: 5px;
@@ -143,5 +176,9 @@
     .fa {
       margin-right: 5px;
     }
+  }
+  .green-border {
+    border: 1px solid #54af5d;
+    border-radius: 4px;
   }
 </style>

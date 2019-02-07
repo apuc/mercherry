@@ -42,7 +42,10 @@
         </div>
       </div>
     </section>
-    <VacancyModal :info="info"/>
+    <VacancyModal
+        :info="info"
+        :id="id"
+    />
   </main>
 </template>
 

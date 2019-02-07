@@ -75,5 +75,6 @@ export default new Router({
       meta: {layout: 'auth'},
       component: Password
     }
-  ]
+  ],
 })
+

@@ -109,6 +109,10 @@
           username: this.login,
           email: this.email,
           password: this.password
+        }).then(data => {
+          if (data.body.token) {
+            this.$router.push('/');
+          }
         })
       }
     }

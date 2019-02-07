@@ -75,6 +75,10 @@
         this.LOGIN({
           login: this.login,
           password: this.password
+        }).then(data => {
+          if (data.body.token) {
+            this.$router.push('/');
+          }
         })
       }
     }

@@ -22,13 +22,13 @@
 
 <script>
   import VacancyItem from "../VacancyItem";
-  import {mapState} from "vuex";
+  import {mapGetters} from "vuex";
 
   export default {
     name: "HomeVacancies",
     computed: {
-      ...mapState({
-        vacancies: 'vacancies'
+      ...mapGetters({
+        vacancies: 'old/oldVacanciesList'
       })
     },
     components: {VacancyItem}

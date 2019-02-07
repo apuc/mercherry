@@ -11,6 +11,7 @@
     </div>
     <div class="d-flex flex-wrap align-items-center">
       <div class="vacancy-duration fs-14 pr-1">
+        <span>{{info.city}}</span>
         <div class="three-circle">
           <span></span>
           <span></span>

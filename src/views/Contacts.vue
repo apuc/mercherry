@@ -75,6 +75,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
+  import { mapActions } from 'vuex';
 
   export default {
     name: "Contacts",
@@ -86,17 +87,20 @@
       }
     },
     methods: {
+      ...mapActions({
+        contactStatus: 'contacts/CONTACT'
+      }),
       validateBeforeSubmit() {
         this.$validator.validateAll().then((result) => {
           if (result) {
-            // eslint-disable-next-line
-            alert('Form Submitted!');
-            return;
+            this.contactStatus({
+              name: this.name,
+              email: this.email,
+              body: this.textarea
+            });
           }
-
-          alert('Correct them errors!');
         });
-      },
+      }
     },
     computed: {
       ...mapFields({

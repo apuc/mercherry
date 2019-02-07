@@ -8,6 +8,7 @@ import Policy from "./views/Policy";
 import Contacts from "./views/Contacts";
 import Profile from "./views/Profile";
 import Password from "./views/Password";
+import Offer from "./views/Offer";
 
 Vue.use(Router);
 
@@ -51,6 +52,11 @@ export default new Router({
       path: '/policy',
       name: 'policy',
       component: Policy
+    },
+    {
+      path: '/offer',
+      name: 'offer',
+      component: Offer
     },
     {
       path: '/contacts',

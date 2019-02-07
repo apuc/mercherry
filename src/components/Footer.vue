@@ -28,7 +28,7 @@
                 <router-link class="nav-link" to="/contacts">Контакты</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="#">Пользовательское соглашение</router-link>
+                <router-link class="nav-link" to="/offer">Пользовательское соглашение</router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/policy">Политика обработки персональных данных</router-link>

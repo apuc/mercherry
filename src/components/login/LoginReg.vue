@@ -75,7 +75,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
 
   export default {
     name: "LoginReg",
@@ -84,7 +84,8 @@
         login: '',
         email: '',
         password: '',
-        checkbox: ''
+        checkbox: '',
+        err: {}
       }
     },
     computed: {
@@ -92,9 +93,6 @@
         loginFlags: 'login',
         emailFlags: 'email',
         passwordFlags: 'password',
-      }),
-      ...mapGetters({
-        err: 'auth/getRegErr'
       })
     },
     methods: {
@@ -110,8 +108,10 @@
           email: this.email,
           password: this.password
         }).then(data => {
-          if (data.body.token) {
+          if (data.ok) {
             this.$router.push('/');
+          } else {
+            this.err = data.body.error;
           }
         })
       }

@@ -7,7 +7,7 @@
             <h2>Доступные вакансии</h2>
           </div>
           <ul class="list-unstyled job-list">
-            <VacancyItem v-for="item in vacancies"
+            <VacancyItem v-for="item in vacancies(5)"
                      :item="item"
             />
           </ul>
@@ -22,16 +22,24 @@
 
 <script>
   import VacancyItem from "../VacancyItem";
-  import {mapGetters} from "vuex";
+  import {mapGetters, mapActions} from "vuex";
 
   export default {
     name: "HomeVacancies",
+    components: {VacancyItem},
     computed: {
       ...mapGetters({
-        vacancies: 'old/oldVacanciesList'
+        vacancies: 'vacancies/firstVacancies'
       })
     },
-    components: {VacancyItem}
+    methods: {
+      ...mapActions({
+        getVacancies: 'vacancies/GET_VACANCIES_LIST'
+      })
+    },
+    created() {
+      this.getVacancies({});
+    }
   }
 </script>
 

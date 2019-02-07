@@ -45,7 +45,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapActions} from 'vuex';
 
   export default {
     name: "LoginAuth",
@@ -53,15 +53,13 @@
       return {
         login: '',
         password: '',
+        err: {}
       }
     },
     computed: {
       ...mapFields({
         loginFlags: 'login',
         passwordFlags: 'password',
-      }),
-      ...mapGetters({
-        err: 'auth/getLoginErr'
       })
     },
     methods: {
@@ -76,8 +74,10 @@
           login: this.login,
           password: this.password
         }).then(data => {
-          if (data.body.token) {
+          if (data.ok) {
             this.$router.push('/');
+          } else {
+            this.err = data.body.error;
           }
         })
       }

@@ -112,7 +112,7 @@
 <script>
   import { mapFields } from 'vee-validate';
   import cityMixin from '../../../cityMixin'
-  import {mapState} from 'vuex';
+  import {mapGetters} from 'vuex';
 
   export default {
     name: "ProfileConfigAdd",
@@ -169,8 +169,8 @@
       ...mapFields({
         cityFlags: 'city'
       }),
-      ...mapState({
-        user: "user"
+      ...mapGetters({
+        user: "old/user"
       })
     },
     watch: {

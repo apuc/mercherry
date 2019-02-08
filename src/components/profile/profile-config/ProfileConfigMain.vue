@@ -66,6 +66,8 @@
 
 <script>
   import { mapFields } from 'vee-validate';
+  import { mapGetters } from 'vuex';
+
   export default {
     name: "ProfileConfigMain",
     data() {
@@ -92,7 +94,14 @@
       ...mapFields({
         emailFlags: 'email',
         nameFlags: 'name'
+      }),
+      ...mapGetters({
+        dataUser: 'profile/dataUser'
       })
+    },
+    created() {
+      this.name = this.dataUser.username;
+
     }
   }
 </script>

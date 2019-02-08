@@ -67,6 +67,9 @@ validator.localize('ru', dictionary.ru);
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
+  if(localStorage.getItem('token')) {
+    store.dispatch('profile/PROFILE');
+  }
   if (to.meta.layout === 'auth' && localStorage.getItem('token')
       || to.path === '/profile' && !localStorage.getItem('token')) {
     next({name: 'home'})
@@ -78,7 +81,6 @@ router.beforeEach((to, from, next) => {
 
 const token = localStorage.getItem('token');
 if (token) {
-  console.log(token);
   Vue.http.headers.common['Authorization'] = `Bearer ${token}`;
 }
 

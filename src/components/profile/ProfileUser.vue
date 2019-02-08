@@ -8,12 +8,12 @@
               <div class="d-flex align-items-center">
                 <figure class="user user-circle avatar-block mr-3">
                   <a href="#" class="user-photo show-avatar">
-                    <img class="avatar avatar-xl rounded" src="/img/avatar.jpg" alt="">
+                    <img class="avatar avatar-xl rounded" :src="dataUser.avatar" alt="">
                   </a>
                 </figure>
                 <div class="media-body">
                   <h2 class="mb-0">
-                    <strong>apuc</strong>
+                    <strong>{{dataUser.username}}</strong>
                   </h2>
                 </div>
               </div>
@@ -26,8 +26,15 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
-    name: "ProfileUser"
+    name: "ProfileUser",
+    computed: {
+      ...mapGetters({
+        dataUser: 'profile/dataUser'
+      })
+    },
   }
 </script>
 

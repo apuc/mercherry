@@ -28,6 +28,7 @@
   import ProfileConfig from "../components/profile/ProfileConfig";
   import ProfileModalAvatar from "../components/profile/ProfileModalAvatar";
   import ProfileModalCity from "../components/profile/ProfileModalCity";
+
   export default {
     name: "Profile",
     components: {
@@ -57,9 +58,10 @@
             name: 'Настройки',
             href: 'nav-config'
           }
-        ]
+        ],
+        data: {}
       }
-    }
+    },
   }
 </script>
 

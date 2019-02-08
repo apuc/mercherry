@@ -33,13 +33,13 @@
 
 <script>
 import cityMixin from '../../cityMixin';
-import {mapState} from 'vuex';
+import {mapGetters} from 'vuex';
 
   export default {
     name: "ProfileModalCity",
     computed: {
-      ...mapState({
-        user: "user"
+      ...mapGetters({
+        user: "old/user"
       })
     },
     mixins: [cityMixin]

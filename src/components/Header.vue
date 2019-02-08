@@ -77,7 +77,7 @@
                 <i class="fa fa-lg fa-envelope-o"></i>
               </router-link>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">apuc</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{dataUser.username}}</a>
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/profile">Профиль</router-link>
                 <router-link class="dropdown-item" @click.native="logOut()" to="/login">Выход</router-link>
@@ -96,6 +96,8 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
     name: "Header",
     data() {
@@ -107,6 +109,11 @@
       'color',
       'headerClass'
     ],
+    computed: {
+      ...mapGetters({
+        dataUser: 'profile/dataUser'
+      })
+    },
     methods: {
       logOut() {
         localStorage.clear();

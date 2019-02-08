@@ -10,7 +10,7 @@
           <div class="status-response__line-inner" :style="progressWidth"></div>
         </div>
       </div>
-      <div class="green-border p-3 mb-5">
+      <div class="green-border p-2 p-sm-3 mb-5">
         Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
       </div>
     </template>
@@ -128,12 +128,28 @@
     width: 70%;
     margin: 0 auto;
     padding-top: 59px;
+    @media (max-width: 991px) {
+      width: 80%;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+      height: 300px;
+      padding-top: 0;
+    }
     &__item {
       position: absolute;
+      z-index: 1;
       top: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
+      @media (max-width: 767px) {
+        flex-direction: row-reverse;
+        top: unset;
+        right: unset !important;
+        left: -10px !important;
+        transform: none !important;
+      }
       &:nth-of-type(1) {
         left: 0;
         transform: translateX(-50%);
@@ -141,10 +157,16 @@
       &:nth-of-type(2) {
         left: 50%;
         transform: translateX(-50%);
+        @media (max-width: 767px) {
+          top: calc(50% - 12px);
+        }
       }
       &:nth-of-type(3) {
         right: 0;
         transform: translateX(50%);
+        @media (max-width: 767px) {
+          bottom: -5px;
+        }
       }
     }
     &__circle {
@@ -153,6 +175,10 @@
       margin-top: 15px;
       background-color: #f3f3f3;
       border-radius: 50%;
+      @media (max-width: 767px) {
+        margin-top: 0;
+        margin-right: 20px;
+      }
       &--active {
         background-color: #54af5d;
       }
@@ -162,6 +188,12 @@
       height: 4px;
       margin-top: -12px;
       background-color: #ddd;
+      @media (max-width: 767px) {
+        width: 300px;
+        margin-top: 0;
+        transform: rotate(90deg);
+        transform-origin: 0;
+      }
       &-inner {
         height: 100%;
         background-color: #54af5d;

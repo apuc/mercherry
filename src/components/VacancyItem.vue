@@ -1,5 +1,5 @@
 <template>
-  <li class="media bordered mb-2 p-3 bg-white">
+  <li class="media bordered mb-2 p-2 p-sm-3 bg-white">
     <div class="media-body">
       <div class="d-flex flex-wrap flex-sm-nowrap flex-sm-row flex-column">
         <div class="pr-2 d-flex flex-column">

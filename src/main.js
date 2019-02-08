@@ -76,11 +76,11 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-// const token = localStorage.getItem('token');
-// if (token) {
-//   console.log(token);
-//   Vue.http.headers.common['Authorization'] = `Bearer ${token}`;
-// }
+const token = localStorage.getItem('token');
+if (token) {
+  console.log(token);
+  Vue.http.headers.common['Authorization'] = `Bearer ${token}`;
+}
 
 
 new Vue({

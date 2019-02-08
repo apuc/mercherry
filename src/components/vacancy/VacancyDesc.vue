@@ -1,17 +1,19 @@
 <template>
   <div>
-    <div class="status-response">
-      <div class="status-response__items">
-        <div class="status-response__item" v-for="item in responseSteps">
-          <span>{{item.name}}</span>
-          <div class="status-response__circle" :class="item.status ? 'status-response__circle--active' : ''">
-          </div>
+    <template v-if="info.hasOwnProperty('response')">
+      <div class="status-response mb-5 mt-2">
+        <div class="status-response__item" v-for="(item, index) in info.response.list">
+          <span class="c-dark-gray">{{item}}</span>
+          <div class="status-response__circle" :class="index <= info.response.status ? 'status-response__circle--active' : ''"></div>
+        </div>
+        <div class="status-response__line">
+          <div class="status-response__line-inner" :style="progressWidth"></div>
         </div>
       </div>
-    </div>
-    <div class="green-border p-3 mb-5">
-      Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
-    </div>
+      <div class="green-border p-3 mb-5">
+        Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
+      </div>
+    </template>
     <div class="c-gray fs-14 mb-1">
       <span>3 дня назад, 26 янв., 14:41</span>
     </div>
@@ -89,19 +91,6 @@
     },
     data() {
       return {
-        responseSteps: [
-          {
-            name: 'Отклик',
-            status: false
-          },
-          {
-            name: 'Собеседование',
-            status: false
-          },{
-            name: 'Выход в торговую точку',
-            status: false
-          }
-        ],
         vacancyDataName: {
           type: 'Тип вакансии',
           point_count: 'Количество точек',
@@ -122,27 +111,59 @@
           audio_record: 'Аудиозапись'
         }
       }
+    },
+    computed: {
+      progressWidth() {
+        let width;
+        width = 100 / (this.info.response.list.length - 1) * this.info.response.status + '%';
+        return 'width: ' + width;
+      }
     }
   }
 </script>
 
 <style lang="scss">
   .status-response {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 59px;
     &__item {
+      position: absolute;
+      top: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      &s {
-        display: flex;
-        justify-content: space-between;
+      &:nth-of-type(1) {
+        left: 0;
+        transform: translateX(-50%);
+      }
+      &:nth-of-type(2) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &:nth-of-type(3) {
+        right: 0;
+        transform: translateX(50%);
       }
     }
     &__circle {
       width: 20px;
       height: 20px;
-      background-color: #ddd;
+      margin-top: 15px;
+      background-color: #f3f3f3;
       border-radius: 50%;
       &--active {
+        background-color: #54af5d;
+      }
+    }
+    &__line {
+      width: 100%;
+      height: 4px;
+      margin-top: -12px;
+      background-color: #ddd;
+      &-inner {
+        height: 100%;
         background-color: #54af5d;
       }
     }

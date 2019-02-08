@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-layout">
+  <div class="profile-layout layout">
     <Header/>
     <slot/>
     <Footer :layout="'profile'"/>

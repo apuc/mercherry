@@ -1,5 +1,5 @@
 <template>
-  <div class="job-layout">
+  <div class="job-layout layout">
     <Header/>
     <slot/>
     <Footer :layout="'job'"/>

@@ -1,5 +1,7 @@
 <template>
-  <section class="policy bg-light" v-html="policyInfo"></section>
+  <main class="main bg-light">
+    <section class="policy" v-html="policyInfo"></section>
+  </main>
 </template>
 
 <script>

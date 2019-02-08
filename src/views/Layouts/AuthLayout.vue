@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="auth-layout layout">
     <Header :color="'dark'" :headerClass="'header-sticky header-dark fixed-top'" />
     <slot/>
   </div>

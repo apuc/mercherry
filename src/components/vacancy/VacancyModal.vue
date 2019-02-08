@@ -25,7 +25,16 @@
                   <span>Нет</span>
                 </label>
               </div>
+              <span class="text-danger" v-if="err.hasOwnProperty(index)">
+                {{err[index]}}
+              </span>
             </div>
+            <span class="text-danger" v-if="err.hasOwnProperty('id')">
+              {{err.id}}
+            </span>
+            <span v-if="success !== ''">
+              {{success}}
+            </span>
           </div>
           <div class="modal-footer pt-1">
             <button type="submit" class="btn btn-primary btn-block">Откликнуться</button>
@@ -43,7 +52,9 @@
     name: "VacancyModal",
     data() {
       return {
-        inputsValues: {}
+        inputsValues: {},
+        err: {},
+        success: ''
       }
     },
     props: {
@@ -64,6 +75,13 @@
         this.responseVacancy({
           answer: this.inputsValues,
           id: this.id
+        }).then(data => {
+          if (data.ok) {
+            this.success = 'Анкета отправлена';
+          }
+          else {
+            this.err = data.body.error;
+          }
         });
       }
     }

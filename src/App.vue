@@ -45,6 +45,16 @@
     text-align: left;
   }
 
+  .layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+
   section {
     padding: 6.25rem 0;
   }
@@ -180,5 +190,10 @@
   }
   .mr-16px {
     margin-right: 16px;
+  }
+  .first-letter-up {
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 </style>

@@ -4,7 +4,7 @@
       <div class="d-flex flex-wrap flex-sm-nowrap flex-sm-row flex-column">
         <div class="pr-2 d-flex flex-column">
           <h5 class="mt-0 mb-0">
-            <router-link class="c-dark-link" :to="`/job/${item.id}`">{{item.label}}</router-link>
+            <router-link class="c-dark-link first-letter-up d-block" :to="`/job/${item.id}`">{{item.label}}</router-link>
           </h5>
           <p class="mb-0 c-medium-gray mt-auto">
             <span>

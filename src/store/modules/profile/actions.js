@@ -20,11 +20,12 @@ export default {
     return await Vue.http.post(`${process.env.VUE_APP_API_URL}/profile/avatar`, file)
       .then(
         res => {
-          console.log(res)
           context.commit('USER_AVATAR', res.body.avatar);
           return res;
         },
-        err => {console.log(err);}
+        err => {
+          return err;
+        }
       )
       .catch(err => console.error(`catch, ${err}`));
   },

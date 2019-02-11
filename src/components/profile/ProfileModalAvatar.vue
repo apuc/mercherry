@@ -8,12 +8,14 @@
             <p class="mb-0">
               Минимальный размер изображения 160х160 пикселей
             </p>
+            <div v-if="err.hasOwnProperty('file')">
+              {{err.file}}
+            </div>
           </div>
           <div class="modal-footer">
             <input type="file" class="d-none" id="validatedCustomFile" required @change="setAvatarFormData">
             <label class="btn btn-primary btn-block m-0" for="validatedCustomFile">Загрузить фото</label>
           </div>
-
           <button type="submit" class="d-none" ref="submit">Submit</button>
         </form>
       </div>
@@ -30,7 +32,8 @@
     data() {
       return {
         img: undefined,
-        imgSrc: ''
+        imgSrc: '',
+        err: {}
       }
     },
     methods: {
@@ -53,7 +56,12 @@
         submit.click();
       },
       submitAvatar() {
-        this.AVATAR(this.img);
+        this.AVATAR(this.img)
+          .then(data => {
+            if (data.body.hasOwnProperty('error')) {
+              this.err = data.body.error;
+            }
+          });
       }
     }
   }

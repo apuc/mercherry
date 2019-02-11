@@ -2,7 +2,8 @@ import getters from './getters';
 import actions from './actions';
 import mutations from './mutations';
 const state = {
-  dataUser: {}
+  dataUser: {},
+  auth: false
 };
 export default {
   state,

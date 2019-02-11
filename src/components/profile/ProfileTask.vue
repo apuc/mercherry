@@ -25,7 +25,7 @@
         vacancies: 'old/oldVacanciesList'
       })
     },
-    components: {VacancyItem}
+    components: {VacancyItem},
   }
 </script>
 

@@ -20,7 +20,7 @@
               <router-link class="nav-link" to="/contacts">Написать нам</router-link>
             </li>
           </ul>
-          <ul class="navbar-nav align-items-center mr-0" v-if="enter">
+          <ul class="navbar-nav align-items-center mr-0" v-if="auth">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle no-cursor" href="#" data-toggle="dropdown">
                 <i class="fa fa-lg fa-bell-o active"></i>
@@ -100,18 +100,14 @@
 
   export default {
     name: "Header",
-    data() {
-      return {
-        enter: false
-      }
-    },
     props: [
       'color',
       'headerClass'
     ],
     computed: {
       ...mapGetters({
-        dataUser: 'profile/dataUser'
+        dataUser: 'profile/dataUser',
+        auth: 'profile/auth'
       })
     },
     methods: {
@@ -119,14 +115,6 @@
         localStorage.clear();
       }
     },
-    created() {
-      if (localStorage.token !== '' && localStorage.token !== undefined) {
-        this.enter = true;
-      }
-      else {
-        this.enter = false;
-      }
-    }
   }
 </script>
 

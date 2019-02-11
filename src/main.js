@@ -66,12 +66,12 @@ validator.localize('ru', dictionary.ru);
 
 Vue.config.productionTip = false;
 
-router.beforeEach((to, from, next) => {
+router.beforeEach( async (to, from, next) => {
   if(localStorage.getItem('token')) {
-    store.dispatch('profile/PROFILE');
+    await store.dispatch('profile/PROFILE');
   }
-  if (to.meta.layout === 'auth' && localStorage.getItem('token')
-      || to.path === '/profile' && !localStorage.getItem('token')) {
+  if (to.meta.layout === 'auth' && store.getters['profile/auth']
+      || to.path === '/profile' && !store.getters['profile/auth']) {
     next({name: 'home'})
   }
   else {

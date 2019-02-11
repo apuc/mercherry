@@ -2,7 +2,7 @@
   <div class="row mb-4">
     <div class="col">
       <h3 class="mb-2 fs-22 font-weight-normal">Основная информация</h3>
-      <form>
+      <form @submit.prevent="validateBeforeSubmit">
         <div class="form-row">
           <div class="col">
             <div class="form-group field-profileform-username required">
@@ -11,7 +11,7 @@
                      id="profileform-username"
                      class="form-control"
                      name="name"
-                     v-model="name"
+                     v-model="user.username"
                      v-validate="'required|alpha'"
               >
               <div v-show="!nameFlags.valid && nameFlags.touched">Необходимо заполнить «Имя».</div>
@@ -22,13 +22,13 @@
           <div class="col-sm-6">
             <div class="form-group field-profileform-name">
               <label class="control-label" for="profileform-name">Имя</label>
-              <input type="text" id="profileform-name" class="form-control">
+              <input type="text" id="profileform-name" class="form-control" v-model="user.first_name">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group field-profileform-second_name">
               <label class="control-label" for="profileform-second_name">Фамилия</label>
-              <input type="text" id="profileform-second_name" class="form-control">
+              <input type="text" id="profileform-second_name" class="form-control" v-model="user.last_name">
             </div>
           </div>
         </div>
@@ -40,19 +40,23 @@
                      id="profileform-email"
                      class="form-control"
                      name="email"
-                     v-model="email"
+                     v-model="user.email"
                      v-validate="'required|email'"
               >
               <div v-show="emailFlags.invalid && emailFlags.touched && !emailFlags.dirty">Необходимо заполнить «Email.</div>
               <div v-show="emailFlags.invalid && emailFlags.dirty">Значение «Email» не является правильным email адресом.</div>
+              <div v-show="err.hasOwnProperty('email')">{{err.email}}</div>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group field-profileform-phone">
               <label class="control-label" for="profileform-phone">Телефон агента</label>
-              <input type="text" id="profileform-phone" class="form-control" v-mask="'8(###)###-##-##'" v-model="phone" placeholder="8(___)___-__-__">
+              <input type="text" id="profileform-phone" class="form-control" v-mask="'8(###)###-##-##'" v-model="user.phone" placeholder="8(___)___-__-__">
             </div>
           </div>
+        </div>
+        <div v-if="updated">
+          Обновлено успешно
         </div>
         <div class="form-row mt-1 align-items-center">
           <div class="col-3">
@@ -66,29 +70,40 @@
 
 <script>
   import { mapFields } from 'vee-validate';
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
   export default {
     name: "ProfileConfigMain",
     data() {
       return {
-        email: '',
-        phone: '',
-        name: ''
+        user: {
+          email: '',
+          phone: '',
+          username: '',
+          first_name: '',
+          last_name: ''
+        },
+        err: {},
+        updated: false
       }
     },
     methods: {
       validateBeforeSubmit() {
         this.$validator.validateAll().then((result) => {
           if (result) {
-            // eslint-disable-next-line
-            alert('Form Submitted!');
-            return;
+            this.UPDATE_USER_DATA(this.user)
+              .then(data => {
+                if(data.body.hasOwnProperty('error')) {
+                  this.err = data.body.error;
+                }
+                this.updated = data.ok;
+              });
           }
-
-          alert('Correct them errors!');
         });
       },
+      ...mapActions({
+        UPDATE_USER_DATA: 'profile/UPDATE_USER_DATA'
+      })
     },
     computed: {
       ...mapFields({
@@ -100,8 +115,11 @@
       })
     },
     created() {
-      this.name = this.dataUser.username;
-
+      for (let key in this.dataUser) {
+        if (this.user.hasOwnProperty(key)) {
+          this.user[key] = this.dataUser[key];
+        }
+      }
     }
   }
 </script>

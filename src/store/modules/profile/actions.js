@@ -6,23 +6,52 @@ export default {
       .then(
         res => {
           context.commit('DATA_USER', res.body);
+          context.commit('AUTH', true);
         },
-        err => { console.log(err) }
+        err => {
+          console.log(err);
+          context.commit('AUTH', false);
+        }
       )
       .catch(err => console.error(`catch, ${err}`));
   },
 
   'AVATAR': async (context, file) => {
-    return await Vue.http.post(`${process.env.VUE_APP_API_URL}/profile/avatar`, file, {
-      headers: {
-        "Content-Type": "multipart/form-data;"
-      }
-    })
+    return await Vue.http.post(`${process.env.VUE_APP_API_URL}/profile/avatar`, file)
+      .then(
+        res => {
+          console.log(res)
+          context.commit('USER_AVATAR', res.body.avatar);
+          return res;
+        },
+        err => {console.log(err);}
+      )
+      .catch(err => console.error(`catch, ${err}`));
+  },
+
+  'UPDATE_USER_DATA': async (context, data) => {
+    return await Vue.http.post(`${process.env.VUE_APP_API_URL}/profile/update`, data)
+      .then(
+        res => {
+          context.commit('DATA_USER', data);
+          return res;
+        },
+        err => {
+          return err;
+        }
+      )
+      .catch(err => console.error(`catch, ${err}`));
+  },
+
+  'PASSWORD': async (context, data) => {
+    return await Vue.http.post(`${process.env.VUE_APP_API_URL}/profile/password`, data)
       .then(
         res => {
           return res;
         },
-        err => { console.log(err) }
+        err => {
+          return err;
+        }
       )
       .catch(err => console.error(`catch, ${err}`));
   }

@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-md-10 text-center">
           <h1>
-            Поиск вакансий и разовых заданий в торговых точках
+            Поиск вакансий в торговых точках на прямую от производителей
           </h1>
           <router-link class="btn btn-purple btn-rounded px-5" to="/job">Поиск вакансий</router-link>
         </div>

@@ -1,7 +1,7 @@
 <template>
-  <section class="profile-user pb-0">
+  <section class="profile-user pb-0 position-relative">
     <div class="profile-user-bg"></div>
-    <div class="container">
+    <div class="container position-relative">
       <div class="row justify-content-center align-items-end mb-5">
         <div class="col col-md-8">
           <div class="row align-items-center">
@@ -41,13 +41,12 @@
 
 <style lang="scss">
   .profile-user {
-    position: relative;
     &-bg {
       position: absolute;
       top: 0;
-      right: 0;
-      bottom: 0;
       left: 0;
+      width: 100%;
+      height: 300px;
       background-image: url('/img/portfolio-bg-2.jpg');
       background-size: cover;
       background-position: center;
@@ -61,9 +60,6 @@
         content: "";
         background: rgba(0, 0, 0, 0.25);
       }
-    }
-    .container {
-      position: relative;
     }
   }
   .user {

@@ -46,8 +46,8 @@
         <router-link to="#" class="fs-14">Статистика по региону</router-link>
       </div>
     </div>
-    <button class="btn btn-purple my-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
-    <div class="mb-4">
+    <button v-if="!info.hasOwnProperty('response')" class="btn btn-purple mt-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
+    <div class="mb-4 mt-3">
       <div class="row">
         <div class="col-xl-6 mb-1"
              v-for="(value, key) in vacancyDataName"
@@ -76,7 +76,7 @@
       <h3 class="fs-22 font-weight-normal mb-1">Описание:</h3>
       <p v-html="info.description"></p>
     </div>
-    <button class="btn btn-purple mb-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
+    <button v-if="!info.hasOwnProperty('response')" class="btn btn-purple mb-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
   </div>
 </template>
 

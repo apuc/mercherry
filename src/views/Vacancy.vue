@@ -29,14 +29,17 @@
 
 
       </yandex-map>
-      <div class="container pt-3">
-        <div class="row justify-content-center align-items-end mb-0">
-          <div class="col-md-10">
-            <div class="align-items-center">
-              <VacancyDesc
-                  :info="info"
-              />
-              <VacancySimilar/>
+      <div class="position-relative">
+        <div class="profile-user-bg"></div>
+        <div class="container pt-3 position-relative">
+          <div class="row justify-content-center align-items-end mb-0">
+            <div class="col-md-10">
+              <div class="align-items-center">
+                <VacancyDesc
+                    :info="info"
+                />
+                <VacancySimilar/>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 <template>
   <section class="profile-user pb-0">
+    <div class="profile-user-bg"></div>
     <div class="container">
       <div class="row justify-content-center align-items-end mb-5">
         <div class="col col-md-8">
@@ -38,7 +39,33 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  .profile-user {
+    position: relative;
+    &-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('/img/portfolio-bg-2.jpg');
+      background-size: cover;
+      background-position: center;
+      -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+      &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: "";
+        background: rgba(0, 0, 0, 0.25);
+      }
+    }
+    .container {
+      position: relative;
+    }
+  }
   .user {
     border-radius: 0.25rem;
     position: relative;

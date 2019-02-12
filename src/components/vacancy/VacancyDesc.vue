@@ -4,7 +4,7 @@
       <div class="status-response mb-5 mt-2">
         <div class="status-response__item" v-for="(item, index) in info.response.list">
           <span class="c-dark-gray">{{item}}</span>
-          <div class="status-response__circle" :class="index <= info.response.status ? 'status-response__circle--active' : ''"></div>
+          <div class="status-response__circle" :class="index <= status ? 'status-response__circle--active' : ''"></div>
         </div>
         <div class="status-response__line">
           <div class="status-response__line-inner" :style="progressWidth"></div>
@@ -46,7 +46,7 @@
         <router-link to="#" class="fs-14">Статистика по региону</router-link>
       </div>
     </div>
-    <a class="btn btn-purple my-3" href="#" data-toggle="modal" data-target="#responseModal">Откликнуться</a>
+    <button class="btn btn-purple my-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
     <div class="mb-4">
       <div class="row">
         <div class="col-xl-6 mb-1"
@@ -76,11 +76,13 @@
       <h3 class="fs-22 font-weight-normal mb-1">Описание:</h3>
       <p v-html="info.description"></p>
     </div>
-    <a class="btn btn-purple mb-3" href="#" data-toggle="modal" data-target="#responseModal">Откликнуться</a>
+    <button class="btn btn-purple mb-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
     name: "VacancyDesc",
     props: {
@@ -109,14 +111,34 @@
           mobile : 'КПК (мобильный телефон)',
           auto: 'Наличие автомобиля',
           audio_record: 'Аудиозапись'
-        }
+        },
+        status: 0
       }
     },
     computed: {
+      ...mapGetters({
+        auth: 'profile/auth'
+      }),
       progressWidth() {
-        let width;
-        width = 100 / (this.info.response.list.length - 1) * this.info.response.status + '%';
+        let width = 0;
+        for (let i = 0; i < this.info.response.list.length; i++) {
+          if (this.info.response.list[i] === this.info.response.text) {
+            this.status = i;
+          }
+        }
+        if (this.info.response.status !== 50) {
+          width = 100 / (this.info.response.list.length - 1) * this.status + '%';
+        }
         return 'width: ' + width;
+      }
+    },
+    methods: {
+      redirectLogin() {
+        if (!this.auth) {
+          this.$router.push('/login');
+          return false;
+        }
+        return true;
       }
     }
   }

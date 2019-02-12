@@ -1,5 +1,6 @@
 <template>
   <div class="modal fade" id="responseModal">
+    <button class="d-none" data-dismiss="modal" ref="modalClose"></button>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <form @submit.prevent="sendResponse">
@@ -29,12 +30,12 @@
                 {{err[index]}}
               </span>
             </div>
-            <span class="text-danger" v-if="err.hasOwnProperty('id')">
+            <div class="text-danger" v-if="err.hasOwnProperty('id')">
               {{err.id}}
-            </span>
-            <span v-if="success !== ''">
+            </div>
+            <div v-if="success !== ''">
               {{success}}
-            </span>
+            </div>
           </div>
           <div class="modal-footer pt-1">
             <button type="submit" class="btn btn-primary btn-block">Откликнуться</button>
@@ -69,7 +70,8 @@
     },
     methods: {
       ...mapActions({
-        responseVacancy: 'response/RESPONSE_VACANCY'
+        responseVacancy: 'response/RESPONSE_VACANCY',
+        GET_VACANCY_INFO: 'vacancy/GET_VACANCY_INFO'
       }),
       sendResponse() {
         this.responseVacancy({
@@ -78,6 +80,9 @@
         }).then(data => {
           if (data.ok) {
             this.success = 'Анкета отправлена';
+            this.err = {};
+            this.GET_VACANCY_INFO(this.id);
+            this.$refs.modalClose.click();
           }
           else {
             this.err = data.body.error;

@@ -96,7 +96,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import {mapGetters, mapMutations} from 'vuex';
 
   export default {
     name: "Header",
@@ -111,8 +111,12 @@
       })
     },
     methods: {
-      logOut() {
+      ...mapMutations({
+        AUTH: 'profile/AUTH'
+      }),
+      async logOut() {
         localStorage.clear();
+        await this.AUTH(false);
       }
     },
   }

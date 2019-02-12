@@ -30,7 +30,6 @@
 
       </yandex-map>
       <div class="position-relative">
-        <div class="profile-user-bg"></div>
         <div class="container pt-3 position-relative">
           <div class="row justify-content-center align-items-end mb-0">
             <div class="col-md-10">

@@ -73,7 +73,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">
+              <router-link class="nav-link" to="/chat">
                 <i class="fa fa-lg fa-envelope-o"></i>
               </router-link>
             </li>
@@ -306,6 +306,10 @@
       vertical-align: middle;
       text-transform: uppercase;
       font-weight: 600;
+      @media (max-width: 575px) {
+        margin-right: 1rem;
+        font-size: 1.8rem;
+      }
     }
     &-brand.navbar-brand-sm {
       height: 36px;

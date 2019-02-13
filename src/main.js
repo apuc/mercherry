@@ -8,10 +8,12 @@ import {Validator} from 'vee-validate';
 import MainLayout from './views/Layouts/MainLayout';
 import AuthLayout from './views/Layouts/AuthLayout';
 import ProfileLayout from './views/Layouts/ProfileLayout';
+import ChatLayout from './views/Layouts/ChatLayout';
 import JobLayout from './views/Layouts/JobLayout';
 import YmapPlugin from 'vue-yandex-maps';
 import {VueMaskDirective} from 'v-mask';
 import VueResource from 'vue-resource';
+import Vuebar from 'vuebar';
 
 const options = { // you may define your apiKey, lang and version or skip this.
   apiKey: 'xxx', // '' by default
@@ -22,12 +24,14 @@ const options = { // you may define your apiKey, lang and version or skip this.
 
 Vue.use(YmapPlugin, options);
 Vue.use(VueResource);
+Vue.use(Vuebar);
 Vue.directive('mask', VueMaskDirective);
 
 Vue.component('main-layout', MainLayout);
 Vue.component('auth-layout', AuthLayout);
 Vue.component('job-layout', JobLayout);
 Vue.component('profile-layout', ProfileLayout);
+Vue.component('chat-layout', ChatLayout);
 
 Vue.use(VeeValidate, {
   validity: true,

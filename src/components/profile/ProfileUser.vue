@@ -1,6 +1,12 @@
 <template>
   <section class="profile-user pb-0 position-relative">
-    <div class="profile-user-bg"></div>
+    <div class="profile-user-bg"
+         style="background-image:url(/img/portfolio-bg-2.jpg)"
+         data-top-top="transform: translateY(0px);"
+         data-top-bottom="transform: translateY(-250px);"
+    >
+
+    </div>
     <div class="container position-relative">
       <div class="row justify-content-center align-items-end mb-5">
         <div class="col col-md-8">
@@ -47,7 +53,7 @@
       left: 0;
       width: 100%;
       height: 300px;
-      background-image: url('/img/portfolio-bg-2.jpg');
+      /*background-image: url('/img/portfolio-bg-2.jpg');*/
       background-size: cover;
       background-position: center;
       -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));

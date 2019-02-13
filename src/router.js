@@ -9,6 +9,8 @@ import Contacts from "./views/Contacts";
 import Profile from "./views/Profile";
 import Password from "./views/Password";
 import Offer from "./views/Offer";
+import Chat from "./views/Chat";
+import ChatOne from "./views/ChatOne";
 
 Vue.use(Router);
 
@@ -74,6 +76,18 @@ export default new Router({
       name: 'password-reset',
       meta: {layout: 'auth'},
       component: Password
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      meta: {layout: 'chat'},
+      component: Chat
+    },
+    {
+      path: '/chat/:id',
+      name: 'chatOne',
+      meta: {layout: 'chat'},
+      component: ChatOne,
     }
   ],
 })

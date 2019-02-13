@@ -17,7 +17,7 @@
 </script>
 
 <style lang="scss">
-  @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,700");
+  @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700");
   @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,500,700");
   @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&subset=cyrillic,cyrillic-ext');

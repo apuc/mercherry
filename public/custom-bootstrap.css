@@ -232,6 +232,7 @@ selectric-items, .container .swiper-container .swiper-slide, .container .gallery
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     letter-spacing: 0;
 }
+
 .btn-secondary {
     color: #151515;
     background-color: #e5e5e5;

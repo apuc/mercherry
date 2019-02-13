@@ -1,17 +1,22 @@
 <template>
   <div>
     <template v-if="info.hasOwnProperty('response')">
-      <div class="status-response mb-5 mt-2">
-        <div class="status-response__item" v-for="(item, index) in info.response.list">
-          <span class="c-dark-gray">{{item}}</span>
-          <div class="status-response__circle" :class="index <= status ? 'status-response__circle--active' : ''"></div>
+      <template v-if="info.response.status !== 50">
+        <div class="status-response mb-5 mt-2">
+          <div class="status-response__item" v-for="(item, index) in info.response.list">
+            <span class="c-dark-gray">{{item}}</span>
+            <div class="status-response__circle" :class="index <= status ? 'status-response__circle--active' : ''"></div>
+          </div>
+          <div class="status-response__line">
+            <div class="status-response__line-inner" :style="progressWidth"></div>
+          </div>
         </div>
-        <div class="status-response__line">
-          <div class="status-response__line-inner" :style="progressWidth"></div>
+        <div class="green-border p-2 p-sm-3 mb-5">
+          Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
         </div>
-      </div>
-      <div class="green-border p-2 p-sm-3 mb-5">
-        Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
+      </template>
+      <div class="text-danger fs-20 font-weight-bold mb-2" v-if="info.response.status === 50">
+        {{info.response.text}}
       </div>
     </template>
     <div class="c-gray fs-14 mb-1">

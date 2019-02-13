@@ -4,7 +4,7 @@
       <span class="eyebrow mb-1 text-primary">Похожие вакансии</span>
     </div>
     <ul class="list-unstyled job-list">
-      <VacancyItem v-for="item in firstVacancies"
+      <VacancyItem v-for="item in vacancies(3)"
                    :key="item.name"
                    :item="item"
       />
@@ -17,16 +17,24 @@
 
 <script>
   import VacancyItem from "../VacancyItem";
-  import {mapGetters} from "vuex";
+  import {mapGetters, mapActions} from "vuex";
 
   export default {
     name: "VacancySimilar",
+    components: {VacancyItem},
     computed: {
       ...mapGetters({
-        firstVacancies: 'old/firstVacancies'
+        vacancies: 'vacancies/firstVacancies'
       })
     },
-    components: {VacancyItem}
+    methods: {
+      ...mapActions({
+        getVacancies: 'vacancies/GET_VACANCIES_LIST'
+      })
+    },
+    created() {
+      this.getVacancies({});
+    },
   }
 </script>
 

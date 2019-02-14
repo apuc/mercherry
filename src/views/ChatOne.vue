@@ -6,13 +6,10 @@
           <div class="col-md-8">
             <div class="chat-wrap">
               <div class="chat-top">
-                <div class="chat__avatar">
-                  <img :src="data.avatar" alt="">
-                </div>
                 <div class="chat-top__main">
                   <div class="chat__item-main">
                     <span class="chat__name">
-                      {{data.name}}
+                      {{job}}
                     </span>
                   </div>
                 </div>
@@ -26,18 +23,18 @@
                   </div>
                 </div>
               </div>
-              <div class="chat-messages-wrap" ref="chatMessages" v-bar>
-                <div :style="heightMessages">
-                  <div class="chat-messages">
+              <div class="chat-messages-wrap" ref="chatMessagesWrap" v-bar>
+                <div @scroll="scrollMsg()" ref="scrollMsg" :style="heightMessages">
+                  <div class="chat-messages" ref="chatMessages">
                     <ChatMessage v-for="dataMsg in messages"
                                  :data="dataMsg"
                     />
                   </div>
                 </div>
               </div>
-              <form>
+              <form @submit.prevent="submitMessage()">
                 <div class="chat-form">
-                  <textarea class="form-control"></textarea>
+                  <textarea class="form-control" v-model="message"></textarea>
                   <button class="btn btn-danger ml-2 d-none d-sm-inline-block">Отправить</button>
                   <button class="btn btn-danger ml-1 d-sm-none chat-form__btn">
                     <i class="fa fa-send"></i>
@@ -62,54 +59,51 @@
     data() {
       return {
         heightMessages: '',
-        data: {
-          avatar: '/img/users/user-1.jpg',
-          name: 'Jassica',
-          status: 'Online'
-        },
-        messages: [
-          {
-            person: 1,
-            text: 'bla bla bla',
-            time: '8.00 PM'
-          },
-          {
-            person: 2,
-            text: 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla',
-            time: '8.05 PM'
-          },
-          {
-            person: 1,
-            text: 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla',
-            time: '8.08 PM'
-          },
-          {
-            person: 1,
-            text: 'bla bla bla',
-            time: '8.12 PM'
-          },
-          {
-            person: 2,
-            text: 'bla bla bla',
-            time: '8.20 PM'
-          }
-        ]
+        job: '',
+        currentPage: 1,
+        totalPages: undefined,
+        messages: [],
+        message: '',
+        loaded: false
       }
     },
     methods: {
       ...mapActions({
-        CHAT: 'chat/CHAT'
-      })
+        CHAT: 'chat/CHAT',
+        SEND_MESSAGE: 'chat/SEND_MESSAGE'
+      }),
+      submitMessage() {
+        this.SEND_MESSAGE({
+          id: parseInt(this.$route.params.id),
+          text: this.message
+        });
+      },
+      scrollMsg:
+      _.throttle(function() {
+        console.log(this.$refs.scrollMsg.scrollTop)
+      }, 500)
     },
     created() {
-      this.CHAT(this.$route.params.id)
+      this.CHAT({page: this.currentPage, id: this.$route.params.id})
         .then((res) => {
-          console.log(res.body);
           this.messages = res.body.result;
+          this.currentPage = res.body.currentPage;
+          this.job = res.body.job;
+          this.totalPages = res.body.totalPages;
+          this.loaded = true;
         });
     },
     mounted() {
-      this.heightMessages = 'height: ' + getComputedStyle(this.$refs.chatMessages).height;
+      let chatHeight = getComputedStyle(this.$refs.chatMessagesWrap).height;
+      this.heightMessages = 'height: ' + chatHeight;
+    },
+    updated() {
+      if (this.loaded) {
+        let chatHeight = getComputedStyle(this.$refs.chatMessagesWrap).height;
+        let messagesHeight = getComputedStyle(this.$refs.chatMessages).height;
+        this.$refs.scrollMsg.scrollTo(0, parseInt(messagesHeight) - parseInt(chatHeight));
+        this.loaded = false;
+      }
     }
   }
 </script>

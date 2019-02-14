@@ -1,9 +1,6 @@
 <template>
   <div class="chat__item">
     <router-link class="chat__link" :to="`/chat/${data.response_id}`"></router-link>
-    <div class="chat__avatar">
-      <img :src="data.owner_avatar" alt="">
-    </div>
     <div class="chat__item-main">
       <span class="chat__name first-letter-up">
         {{data.job}}
@@ -13,9 +10,9 @@
       </span>
     </div>
     <div class="chat__item-ad">
-      <span class="chat__time">
-        <!--{{data.time}}-->
-      </span>
+      <!--<span class="chat__time">-->
+        <!--{{time}}-->
+      <!--</span>-->
       <span v-if="data.newMessages > 0" class="chat__new-messages">
         {{data.messages_count}}
       </span>

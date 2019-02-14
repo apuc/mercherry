@@ -1,21 +1,49 @@
 <template>
-  <div class="chat-message" :class="data.person === 1 ? 'chat-message--right' : ''">
+  <div class="chat-message" :class="data.owner_id === dataUser.id ? 'chat-message--right' : ''">
     <div class="chat-message__main">
       {{data.text}}
     </div>
     <span class="chat-message__time c-dark-gray">
-      {{data.time}}
+      {{time}}
     </span>
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
     name: "ChatMessage",
+    data() {
+      return {
+        time: ''
+      }
+    },
     props: {
       data: {
         type: Object,
         required: true
+      }
+    },
+    computed: {
+      ...mapGetters({
+        dataUser: 'profile/dataUser'
+      })
+    },
+    created() {
+      let date = new Date(this.data.created * 1000);
+      let dateToday = new Date();
+      this.time = `${date.getHours()}:${date.getMinutes()}`;
+      const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня",
+        "июля", "августа", "сентября", "октября", "ноября", "декабря"
+      ];
+      if (dateToday.getDate() !== date.getDate()
+          || dateToday.getMonth() !== date.getMonth()
+          || dateToday.getFullYear() !== date.getFullYear()) {
+        this.time += ` ${date.getDate()} ${monthNames[date.getMonth()]}`
+        if (dateToday.getFullYear() !== date.getFullYear()) {
+          this.time += ` ${date.getFullYear()}`
+        }
       }
     }
   }

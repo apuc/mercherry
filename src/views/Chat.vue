@@ -24,30 +24,30 @@
 
 <script>
   import ChatItem from "../components/chat/ChatItem";
+  import {mapActions} from 'vuex';
+
   export default {
     name: "Chat",
     components: {ChatItem},
     data() {
       return {
-        messages: [
-          {
-            id: 1,
-            avatar: '/img/users/user-1.jpg',
-            name: 'Jassica',
-            text: 'Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla',
-            time: '07.50 PM',
-            newMessages: 1
-          },
-          {
-            id: 2,
-            avatar: '/img/users/user-2.jpg',
-            name: 'John Doe',
-            text: 'Bla bla bla bla bla bla bla',
-            time: '07.50 PM',
-            newMessages: 0
-          }
-        ]
+        messages: [],
+        totalPages: 0
       }
+    },
+    methods: {
+      ...mapActions({
+        CHATS: 'chat/CHATS'
+      })
+    },
+    created() {
+      this.CHATS()
+        .then(
+          (res) => {
+            this.messages = res.body.result;
+            this.totalPages = res.body.totalPages;
+          }
+        );
     }
   }
 </script>

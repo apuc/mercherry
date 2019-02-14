@@ -14,9 +14,6 @@
                     <span class="chat__name">
                       {{data.name}}
                     </span>
-                    <span class="chat__status c-dark-gray">
-                      {{data.status}}
-                    </span>
                   </div>
                 </div>
                 <div class="chat-detail">
@@ -57,17 +54,19 @@
 
 <script>
   import ChatMessage from "../components/chat/ChatMessage";
+  import {mapActions} from 'vuex';
+
   export default {
     name: "ChatOne",
     components: {ChatMessage},
     data() {
       return {
+        heightMessages: '',
         data: {
           avatar: '/img/users/user-1.jpg',
           name: 'Jassica',
           status: 'Online'
         },
-        heightMessages: '',
         messages: [
           {
             person: 1,
@@ -97,6 +96,18 @@
         ]
       }
     },
+    methods: {
+      ...mapActions({
+        CHAT: 'chat/CHAT'
+      })
+    },
+    created() {
+      this.CHAT(this.$route.params.id)
+        .then((res) => {
+          console.log(res.body);
+          this.messages = res.body.result;
+        });
+    },
     mounted() {
       this.heightMessages = 'height: ' + getComputedStyle(this.$refs.chatMessages).height;
     }
@@ -122,6 +133,9 @@
       align-items: flex-start;
       padding: 15px 20px;
       border-bottom: 1px solid #e5e5e5;
+      &__main {
+        width: calc(100% - 150px);
+      }
       @media (max-width: 575px) {
         padding: 15px;
       }

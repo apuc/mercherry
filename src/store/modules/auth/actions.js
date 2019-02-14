@@ -10,6 +10,7 @@ export default {
           return res;
         },
         (err) => {
+          console.log(err);
           return err;
         }
       )

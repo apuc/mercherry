@@ -1,23 +1,23 @@
 <template>
   <div class="chat__item">
-    <router-link class="chat__link" :to="`/chat/${data.id}`"></router-link>
+    <router-link class="chat__link" :to="`/chat/${data.response_id}`"></router-link>
     <div class="chat__avatar">
-      <img :src="data.avatar" alt="">
+      <img :src="data.owner_avatar" alt="">
     </div>
     <div class="chat__item-main">
-      <span class="chat__name">
-        {{data.name}}
+      <span class="chat__name first-letter-up">
+        {{data.job}}
       </span>
       <span class="chat__text c-dark-gray">
-        {{data.text}}
+        {{data.last_message}}
       </span>
     </div>
     <div class="chat__item-ad">
       <span class="chat__time">
-        {{data.time}}
+        <!--{{data.time}}-->
       </span>
       <span v-if="data.newMessages > 0" class="chat__new-messages">
-        {{data.newMessages}}
+        {{data.messages_count}}
       </span>
     </div>
   </div>
@@ -98,6 +98,9 @@
     }
     &__name {
       font-weight: 700;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     &__time {
       text-transform: uppercase;

@@ -53,7 +53,7 @@
 
 <script>
   import ChatMessage from "../components/chat/ChatMessage";
-  import {mapActions} from 'vuex';
+  import {mapActions, mapGetters} from 'vuex';
 
   export default {
     name: "ChatOne",
@@ -70,6 +70,11 @@
         countNewMessages: 0
       }
     },
+    computed: {
+      ...mapGetters({
+        dataUser: 'profile/dataUser'
+      })
+    },
     methods: {
       ...mapActions({
         CHAT: 'chat/CHAT',
@@ -80,6 +85,15 @@
           id: parseInt(this.$route.params.id),
           text: this.message
         }).then(() => {
+          let id = this.messages[this.messages.length - 1].id;
+          this.messages.push({
+            owner_id: this.dataUser.id,
+            text: this.message,
+            created: Math.round(new Date().getTime() / 1000),
+            id: id + 1
+          });
+          this.messages.shift();
+          this.loaded = true;
           this.message = '';
         });
       },

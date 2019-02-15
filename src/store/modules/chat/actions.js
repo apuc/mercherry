@@ -1,8 +1,10 @@
 import Vue from 'vue';
 
 export default {
-  'CHATS': async (context) => {
-    return await Vue.http.get(`${process.env.VUE_APP_API_URL}/chats`)
+  'CHATS': async (context, params) => {
+    return await Vue.http.get(`${process.env.VUE_APP_API_URL}/chats`, {params: {
+        page: params.page
+      }})
       .then(
         (res) => {
           return res;
@@ -15,7 +17,9 @@ export default {
       .catch(err => console.error(`catch, ${err}`));
   },
   'CHAT': async (context, params) => {
-    return await Vue.http.get(`${process.env.VUE_APP_API_URL}/chats/${params.id}`, params)
+    return await Vue.http.get(`${process.env.VUE_APP_API_URL}/chats/${params.id}`, {params: {
+        page: params.page
+      }})
       .then(
         (res) => {
           return res;

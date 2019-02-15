@@ -28,6 +28,8 @@
                   <div class="chat-messages" ref="chatMessages">
                     <ChatMessage v-for="dataMsg in messages"
                                  :data="dataMsg"
+                                 :ref="`message`"
+                                 :key="dataMsg.id"
                     />
                   </div>
                 </div>
@@ -61,10 +63,11 @@
         heightMessages: '',
         job: '',
         currentPage: 1,
-        totalPages: undefined,
+        totalPages: 1,
         messages: [],
         message: '',
-        loaded: false
+        loaded: false,
+        countNewMessages: 0
       }
     },
     methods: {
@@ -76,17 +79,34 @@
         this.SEND_MESSAGE({
           id: parseInt(this.$route.params.id),
           text: this.message
+        }).then(() => {
+          this.message = '';
         });
       },
       scrollMsg:
       _.throttle(function() {
-        console.log(this.$refs.scrollMsg.scrollTop)
+        if (this.currentPage < this.totalPages) {
+          if (this.$refs.scrollMsg.scrollTop < 10) {
+            this.CHAT({page: this.currentPage + 1, id: this.$route.params.id})
+              .then(res => {
+                this.currentPage = res.body.currentPage;
+                let newMessages = [];
+                for (let i = 0; i < res.body.result.length; i++) {
+                  newMessages[i] = res.body.result[res.body.result.length - i - 1];
+                }
+                this.messages = newMessages.concat(this.messages);
+                this.countNewMessages = res.body.result.length;
+              })
+          }
+        }
       }, 500)
     },
     created() {
       this.CHAT({page: this.currentPage, id: this.$route.params.id})
         .then((res) => {
-          this.messages = res.body.result;
+          for (let i = 0; i < res.body.result.length; i++) {
+            this.messages[i] = res.body.result[res.body.result.length - i - 1];
+          }
           this.currentPage = res.body.currentPage;
           this.job = res.body.job;
           this.totalPages = res.body.totalPages;
@@ -103,6 +123,14 @@
         let messagesHeight = getComputedStyle(this.$refs.chatMessages).height;
         this.$refs.scrollMsg.scrollTo(0, parseInt(messagesHeight) - parseInt(chatHeight));
         this.loaded = false;
+      }
+      if (this.countNewMessages > 0) {
+        let newMessageHeight = 0;
+        for (let i = 0; i < this.countNewMessages; i++) {
+          newMessageHeight += parseInt(getComputedStyle(this.$refs.message[i].$el).height);
+        }
+        this.$refs.scrollMsg.scrollTo(0, newMessageHeight);
+        this.countNewMessages = 0;
       }
     }
   }

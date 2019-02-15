@@ -5,14 +5,17 @@
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="chat-wrap chat" v-bar>
-              <div>
+              <div @scroll="scrollMsg()" ref="scrollMsg">
+                <div ref="chatMessages">
                   <ChatItem v-if="messages.length > 0"
                             v-for="data in messages"
                             :data="data"
+                            :key="data.id"
                   />
                   <div v-else class="py-5 px-3">
                     Сообщений пока нет
                   </div>
+                </div>
               </div>
             </div>
           </div>
@@ -32,22 +35,43 @@
     data() {
       return {
         messages: [],
-        totalPages: 0
+        totalPages: 1,
+        currentPage: 1,
+        bottomPos: 0
       }
     },
     methods: {
       ...mapActions({
         CHATS: 'chat/CHATS'
-      })
+      }),
+      scrollMsg:
+        _.throttle(function() {
+          if (this.currentPage < this.totalPages) {
+            if (this.$refs.scrollMsg.scrollTop > this.bottomPos - 10) {
+              this.CHATS({page: this.currentPage + 1})
+                .then(res => {
+                  this.currentPage = res.body.currentPage;
+                  this.totalPages = res.body.totalPages;
+                  this.messages = this.messages.concat(res.body.result);
+                });
+            }
+          }
+        }, 500)
     },
     created() {
-      this.CHATS()
+      this.CHATS({page: this.currentPage})
         .then(
           (res) => {
-            this.messages = res.body.result;
+            this.currentPage = res.body.currentPage;
             this.totalPages = res.body.totalPages;
+            this.messages = res.body.result;
           }
         );
+    },
+    updated() {
+      let chatHeight = getComputedStyle(this.$refs.scrollMsg).height;
+      let messagesHeight = getComputedStyle(this.$refs.chatMessages).height;
+      this.bottomPos = parseInt(messagesHeight) - parseInt(chatHeight);
     }
   }
 </script>

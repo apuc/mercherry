@@ -30,21 +30,32 @@
         dataUser: 'profile/dataUser'
       })
     },
-    created() {
-      let date = new Date(this.data.created * 1000);
-      let dateToday = new Date();
-      this.time = `${date.getHours()}:${date.getMinutes()}`;
-      const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня",
-        "июля", "августа", "сентября", "октября", "ноября", "декабря"
-      ];
-      if (dateToday.getDate() !== date.getDate()
-          || dateToday.getMonth() !== date.getMonth()
-          || dateToday.getFullYear() !== date.getFullYear()) {
-        this.time += ` ${date.getDate()} ${monthNames[date.getMonth()]}`
-        if (dateToday.getFullYear() !== date.getFullYear()) {
-          this.time += ` ${date.getFullYear()}`
+    methods: {
+      getTime() {
+        let date = new Date(this.data.created * 1000);
+        let dateToday = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        if (minutes < 10) {
+          minutes = '0' + minutes;
+        }
+        this.time = `${hours}:${minutes}`;
+        const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня",
+          "июля", "августа", "сентября", "октября", "ноября", "декабря"
+        ];
+        if (date.toLocaleDateString() !== dateToday.toLocaleDateString()) {
+          this.time += ` ${date.getDate()} ${monthNames[date.getMonth()]}`;
+          if (dateToday.getFullYear() !== date.getFullYear()) {
+            this.time += ` ${date.getFullYear()}`
+          }
         }
       }
+    },
+    created() {
+      this.getTime();
+    },
+    beforeUpdate() {
+      this.getTime();
     }
   }
 </script>

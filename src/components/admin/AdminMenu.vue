@@ -40,7 +40,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .admin-menu {
     display: flex;
     flex-direction: column;

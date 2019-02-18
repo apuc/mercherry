@@ -13,6 +13,10 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  .admin-header {
+    .container {
+      max-width: unset;
+    }
+  }
 </style>

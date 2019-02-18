@@ -1,6 +1,6 @@
 <template>
   <div class="admin-layout layout">
-    <Header/>
+    <Header :headerClass="'admin-header'"/>
     <main class="main">
       <div class="admin-wrap">
         <AdminMenu/>

@@ -10,7 +10,6 @@ import AuthLayout from './views/Layouts/AuthLayout';
 import ProfileLayout from './views/Layouts/ProfileLayout';
 import ChatLayout from './views/Layouts/ChatLayout';
 import JobLayout from './views/Layouts/JobLayout';
-import AdminLayout from './views/Layouts/AdminLayout';
 import YmapPlugin from 'vue-yandex-maps';
 import {VueMaskDirective} from 'v-mask';
 import VueResource from 'vue-resource';
@@ -33,7 +32,6 @@ Vue.component('auth-layout', AuthLayout);
 Vue.component('job-layout', JobLayout);
 Vue.component('profile-layout', ProfileLayout);
 Vue.component('chat-layout', ChatLayout);
-Vue.component('admin-layout', AdminLayout);
 
 Vue.use(VeeValidate, {
   validity: true,

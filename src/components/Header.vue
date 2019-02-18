@@ -175,6 +175,10 @@
         }
       }
     }
+    .dropdown-menu {
+      left: unset;
+      right: 0;
+    }
   }
   .burger {
     display: inline-block;

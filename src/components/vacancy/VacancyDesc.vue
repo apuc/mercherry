@@ -81,10 +81,10 @@
       <h3 class="fs-22 font-weight-normal mb-1">Описание:</h3>
       <p v-html="info.description"></p>
     </div>
-    <div class="d-flex align-items-center">
-      <span class="mr-1">Поделиться вакансией: </span>
-      <div id="my-share"></div>
-    </div>
+    <!--<div class="d-flex align-items-center">-->
+      <!--<span class="mr-1">Поделиться вакансией: </span>-->
+      <!--<div id="my-share"></div>-->
+    <!--</div>-->
     <button v-if="!info.hasOwnProperty('response')" class="btn btn-purple mb-3" :data-toggle="auth ? 'modal' : ''" data-target="#responseModal" @click="redirectLogin()">Откликнуться</button>
   </div>
 </template>

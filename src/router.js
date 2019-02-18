@@ -11,6 +11,9 @@ import Password from "./views/Password";
 import Offer from "./views/Offer";
 import Chat from "./views/Chat";
 import ChatOne from "./views/ChatOne";
+import AdminProjects from "./views/admin/AdminProjects";
+import AdminVacancies from "./views/admin/AdminVacancies";
+import AdminResume from "./views/admin/AdminResume";
 
 Vue.use(Router);
 
@@ -88,6 +91,24 @@ export default new Router({
       name: 'chatOne',
       meta: {layout: 'chat'},
       component: ChatOne,
+    },
+    {
+      path: '/admin/projects',
+      name: 'admin',
+      meta: {layout: 'admin'},
+      component: AdminProjects
+    },
+    {
+      path: '/admin/vacancies',
+      name: 'adminVacancies',
+      meta: {layout: 'admin'},
+      component: AdminVacancies
+    },
+    {
+      path: '/admin/resume',
+      name: 'adminResume',
+      meta: {layout: 'admin'},
+      component: AdminResume
     }
   ],
 })

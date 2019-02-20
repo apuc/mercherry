@@ -47,9 +47,9 @@
       employment() {
         switch(this.item.employment) {
           case 'Полная':
-            return 'green';
+            return 'success';
           case 'Частичная':
-            return 'orange';
+            return 'warning';
           case 'Разовые':
             return 'danger'
         }

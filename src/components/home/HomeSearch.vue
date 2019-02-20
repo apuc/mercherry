@@ -6,14 +6,15 @@
           <h1>
             Поиск вакансий в торговых точках на прямую от производителей
           </h1>
-          <router-link class="btn btn-purple btn-rounded px-5" to="/job">Поиск вакансий</router-link>
+          <router-link class="btn btn-primary btn-rounded px-5" to="/job">Поиск вакансий</router-link>
         </div>
       </div>
       <div class="row justify-content-center mt-10">
         <div class="col-md-10 col-xl-8">
           <div class="row gutter-2 separated text-center">
-            <HomeSearchNumber v-for="item in numbers"
+            <HomeSearchNumber v-for="(item, index) in numbers"
                               :item="item"
+                              :key="`search${index}`"
             />
           </div>
         </div>

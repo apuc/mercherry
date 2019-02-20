@@ -10,7 +10,7 @@
       />
     </ul>
     <div class="text-center mt-4">
-      <router-link class="btn btn-purple px-5" to="/job">Смотреть еще</router-link>
+      <router-link class="btn btn-primary px-5" to="/job">Смотреть еще</router-link>
     </div>
   </div>
 </template>

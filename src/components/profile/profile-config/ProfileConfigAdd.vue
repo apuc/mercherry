@@ -46,14 +46,18 @@
                    name="city"
                    ref="city"
                    v-validate="'required|alpha'"
-                   v-model="user.city.name"
+                   v-model="city.name"
                    autocomplete="off"
                    @focus="city.focused = true"
-                   @blur="city.focused = false"
+                   @blur="focusFalse('city')"
+                   @input="cityRequest()"
             >
 
-            <ul class="dropdown-input" v-if="user.city.name.length > 0 && city.focused">
-              <li v-for="dropdownItem in city.dropdownValue">
+            <ul class="dropdown-input" v-if="city.name.length > 0 && city.focused">
+              <li v-for="(dropdownItem, index) in city.dropdownValue"
+                  ref="cityDrop"
+                  @click="choiceCity(index)"
+              >
                 {{dropdownItem}}
               </li>
             </ul>
@@ -70,7 +74,7 @@
                    v-model="district.name"
                    autocomplete="off"
                    @focus="district.focused = true"
-                   @blur="district.focused = false"
+                   @blur=""
             >
 
             <ul class="dropdown-input" v-if="district.name.length > 0 && district.focused">
@@ -102,7 +106,7 @@
           <p>Вы можете приглашать своих друзей на платформу, отправляя им эту ссылку. Если человек за полгода
             устроиться на любую вакансию ( не задание) с сайта, то вы получаете 1000 рублей, а он за выход на
             работу и отработку 3 дней получает 500 рублей.</p>
-          <strong>Реферальная ссылка:</strong> https://mercherry.ru/login?ref=41WNIjy0w7Z
+          <strong>Реферальная ссылка:</strong> {{dataUser.invite_url}}
         </div>
       </form>
     </div>
@@ -118,17 +122,6 @@
     name: "ProfileConfigAdd",
     data() {
       return {
-        city: {
-          focused: false,
-          name: '',
-          dropdownValue: [
-            '1',
-            '2',
-            '3',
-            '4',
-            '5'
-          ],
-        },
         district: {
           focused: false,
           name: '',
@@ -154,15 +147,8 @@
           alert('Correct them errors!');
         });
       },
-      cityRequest:
-        _.debounce(function(value) {
-
-
-        }, 200),
       districtRequest:
         _.debounce(function(value) {
-
-
         }, 200),
     },
     computed: {
@@ -170,18 +156,15 @@
         cityFlags: 'city'
       }),
       ...mapGetters({
-        user: "old/user"
+        dataUser: 'profile/dataUser'
       })
     },
     watch: {
-      city(value) {
-        this.cityRequest();
-      },
       district(value) {
         this.districtRequest();
       }
     },
-    mixins: [cityMixin]
+    mixins: [cityMixin],
   }
 </script>
 

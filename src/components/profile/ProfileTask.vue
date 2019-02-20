@@ -2,7 +2,7 @@
   <div class="tab-pane">
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
-        <a class="btn btn-purple mb-3" href="/job">Поиск заданий</a>
+        <a class="btn btn-primary mb-3" href="/job">Поиск заданий</a>
         <ul class="list-unstyled job-list">
           <VacancyItem v-for="item in vacancies"
                        :key="item.name"

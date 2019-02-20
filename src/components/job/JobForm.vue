@@ -26,7 +26,7 @@
         </div>
         <div class="px-1">
           <div class="form-group mb-2">
-            <button type="submit" class="btn btn-black col">Искать</button>
+            <button type="submit" class="btn btn-dark col">Искать</button>
           </div>
         </div>
       </div>

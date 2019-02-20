@@ -10,13 +10,21 @@
               <input type="text"
                      id="modal-city"
                      class="form-control"
-                     v-model="user.city.name"
+                     name="city"
+                     ref="city"
+                     v-validate="'required|alpha'"
+                     v-model="city.name"
+                     autocomplete="off"
                      @focus="city.focused = true"
-                     @blur="city.focused = false"
+                     @blur="focusFalse('city')"
+                     @input="cityRequest()"
               >
 
-              <ul class="dropdown-input" v-if="user.city.name.length > 0 && city.focused">
-                <li v-for="dropdownItem in city.dropdownValue">
+              <ul class="dropdown-input" v-if="city.name.length > 0 && city.focused">
+                <li v-for="(dropdownItem, index) in city.dropdownValue"
+                    ref="cityDrop"
+                    @click="choiceCity(index)"
+                >
                   {{dropdownItem}}
                 </li>
               </ul>
@@ -39,7 +47,7 @@ import {mapGetters} from 'vuex';
     name: "ProfileModalCity",
     computed: {
       ...mapGetters({
-        user: "old/user"
+        dataUser: "profile/dataUser"
       })
     },
     mixins: [cityMixin]

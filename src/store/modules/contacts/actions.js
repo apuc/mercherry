@@ -1,8 +1,8 @@
 import Vue from "vue";
 
 export default {
-  'CONTACT': async (context, params) => {
-    await Vue.http.get(`${process.env.VUE_APP_API_URL}/info/personal`, params)
+  'CONTACT': async (context) => {
+    await Vue.http.get(`${process.env.VUE_APP_API_URL}/info/personal`)
       .then(
         res => {
           console.log(res);

@@ -11,7 +11,7 @@
                   <input type="email" class="form-control form-control-rounded px-4" id="exampleInputEmail1" placeholder="Укажите email">
                 </div>
                 <div class="col-sm-4">
-                  <button type="submit" class="btn btn-white btn-rounded btn-block">Подписаться</button>
+                  <button type="submit" class="btn btn-outline-light btn-rounded btn-block">Подписаться</button>
                 </div>
               </div>
             </div>

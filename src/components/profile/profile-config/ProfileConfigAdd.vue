@@ -44,19 +44,19 @@
                    id="advancedprofileform-city"
                    class="form-control"
                    name="city"
-                   ref="city"
-                   v-validate="'required|alpha'"
-                   v-model="city.name"
+                   v-validate="'required'"
+                   v-model="modelCity"
                    autocomplete="off"
+                   ref="city"
                    @focus="city.focused = true"
                    @blur="focusFalse('city')"
-                   @input="cityRequest()"
+                   @input="dropdownRequest({name: 'city', obg: {q: modelCity}})"
             >
 
-            <ul class="dropdown-input" v-if="city.name.length > 0 && city.focused">
+            <ul class="dropdown-input" v-if="profileCity.length > 0 && city.focused && city.dropdownValue.length > 0">
               <li v-for="(dropdownItem, index) in city.dropdownValue"
                   ref="cityDrop"
-                  @click="choiceCity(index)"
+                  @click="choiceValue('city', index)"
               >
                 {{dropdownItem}}
               </li>
@@ -70,15 +70,19 @@
             <input type="text"
                    id="dt-add"
                    class="form-control"
-                   placeholder="Введите название района"
+                   name="district"
                    v-model="district.name"
                    autocomplete="off"
                    @focus="district.focused = true"
-                   @blur=""
+                   @blur="focusFalse('district')"
+                   @input="dropdownRequest({name: 'district', obg: {q: district.name, city: modelCity}})"
             >
 
-            <ul class="dropdown-input" v-if="district.name.length > 0 && district.focused">
-              <li v-for="dropdownItem in district.dropdownValue">
+            <ul class="dropdown-input" v-if="district.name.length > 0 && district.focused && district.dropdownValue.length > 0">
+              <li v-for="(dropdownItem, index) in district.dropdownValue"
+                  @click="choiceValue('district', index)"
+                  ref="districtDrop"
+              >
                 {{dropdownItem}}
               </li>
             </ul>
@@ -116,7 +120,7 @@
 <script>
   import { mapFields } from 'vee-validate';
   import cityMixin from '../../../cityMixin'
-  import {mapGetters} from 'vuex';
+  import {mapGetters, mapActions} from 'vuex';
 
   export default {
     name: "ProfileConfigAdd",
@@ -125,13 +129,7 @@
         district: {
           focused: false,
           name: '',
-          dropdownValue: [
-            '1',
-            '2',
-            '3',
-            '4',
-            '5'
-          ]
+          dropdownValue: []
         },
       }
     },
@@ -147,9 +145,9 @@
           alert('Correct them errors!');
         });
       },
-      districtRequest:
-        _.debounce(function(value) {
-        }, 200),
+      ...mapActions({
+        DISTRICT_LIST: 'lists/DISTRICT_LIST'
+      }),
     },
     computed: {
       ...mapFields({
@@ -157,12 +155,7 @@
       }),
       ...mapGetters({
         dataUser: 'profile/dataUser'
-      })
-    },
-    watch: {
-      district(value) {
-        this.districtRequest();
-      }
+      }),
     },
     mixins: [cityMixin],
   }
@@ -190,6 +183,7 @@
       font-size: 14px;
       color: #333;
       white-space: nowrap;
+      cursor: pointer;
       &:hover {
         background-color: #f5f5f5;
       }

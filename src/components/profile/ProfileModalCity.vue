@@ -11,19 +11,17 @@
                      id="modal-city"
                      class="form-control"
                      name="city"
-                     ref="city"
-                     v-validate="'required|alpha'"
-                     v-model="city.name"
+                     v-model="modelCity"
                      autocomplete="off"
                      @focus="city.focused = true"
                      @blur="focusFalse('city')"
-                     @input="cityRequest()"
+                     @input="dropdownRequest({name: 'city', obg: {q: modelCity}})"
               >
 
-              <ul class="dropdown-input" v-if="city.name.length > 0 && city.focused">
+              <ul class="dropdown-input" v-if="profileCity.length > 0 && city.focused && city.dropdownValue.length > 0">
                 <li v-for="(dropdownItem, index) in city.dropdownValue"
                     ref="cityDrop"
-                    @click="choiceCity(index)"
+                    @click="choiceValue('city', index)"
                 >
                   {{dropdownItem}}
                 </li>

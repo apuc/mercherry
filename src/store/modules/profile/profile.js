@@ -3,7 +3,8 @@ import actions from './actions';
 import mutations from './mutations';
 const state = {
   dataUser: {},
-  auth: false
+  auth: false,
+  city: ''
 };
 export default {
   state,

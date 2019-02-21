@@ -14,7 +14,7 @@
       </div>
     </section>
     <ProfileModalAvatar/>
-    <ProfileModalCity/>
+    <ProfileModalCity @getModalCity="modalCity(city)"/>
   </main>
 </template>
 
@@ -59,7 +59,8 @@
             href: 'nav-config'
           }
         ],
-        data: {}
+        data: {},
+        city: ''
       }
     },
   }

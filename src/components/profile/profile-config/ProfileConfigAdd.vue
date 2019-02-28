@@ -50,7 +50,7 @@
                    ref="city"
                    @focus="city.focused = true"
                    @blur="focusFalse('city')"
-                   @input="dropdownRequest({name: 'city', obg: {q: modelCity}})"
+                   @input="dropdownRequest({name: 'city', obj: {q: modelCity}})"
             >
 
             <ul class="dropdown-input" v-if="profileCity.length > 0 && city.focused && city.dropdownValue.length > 0">
@@ -75,7 +75,7 @@
                    autocomplete="off"
                    @focus="district.focused = true"
                    @blur="focusFalse('district')"
-                   @input="dropdownRequest({name: 'district', obg: {q: district.name, city: modelCity}})"
+                   @input="dropdownRequest({name: 'district', obj: {q: district.name, city: modelCity}})"
             >
 
             <ul class="dropdown-input" v-if="district.name.length > 0 && district.focused && district.dropdownValue.length > 0">

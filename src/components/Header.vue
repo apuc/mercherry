@@ -72,11 +72,11 @@
                 </a>
               </div>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/chat">
-                <i class="fa fa-lg fa-envelope-o"></i>
-              </router-link>
-            </li>
+            <!--<li class="nav-item">-->
+              <!--<router-link class="nav-link" to="/chat">-->
+                <!--<i class="fa fa-lg fa-envelope-o"></i>-->
+              <!--</router-link>-->
+            <!--</li>-->
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{dataUser.username}}</a>
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/profile">Профиль</router-link>

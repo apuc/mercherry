@@ -31,11 +31,15 @@ const cityMixin = {
         this[name].dropdownValue = [];
       }, 200);
     },
+    /**
+     * value {Object} -
+     * value.name {String} -
+     */
     dropdownRequest:
       _.debounce(function(value) {
-        let name = value.name.charAt(0).toUpperCase() + value.name.slice(1);
+        const name = value.name.charAt(0).toUpperCase() + value.name.slice(1);
         if(this[`profile${name}`] !== '') {
-          this[`${name.toUpperCase()}_LIST`](value.obg)
+          this[`${name.toUpperCase()}_LIST`](value.obj)
             .then(res => {
               this[name.toLowerCase()].dropdownValue = [];
               if (typeof res.body === Array) {

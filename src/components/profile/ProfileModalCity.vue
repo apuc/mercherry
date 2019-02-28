@@ -15,7 +15,7 @@
                      autocomplete="off"
                      @focus="city.focused = true"
                      @blur="focusFalse('city')"
-                     @input="dropdownRequest({name: 'city', obg: {q: modelCity}})"
+                     @input="dropdownRequest({name: 'city', obj: {q: modelCity}})"
               >
 
               <ul class="dropdown-input" v-if="profileCity.length > 0 && city.focused && city.dropdownValue.length > 0">

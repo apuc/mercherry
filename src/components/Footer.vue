@@ -22,7 +22,7 @@
     <div class="separator-top">
       <div class="container py-5">
         <div class="row justify-content-between align-items-center">
-          <div class="col-md-5 text-center text-md-left">
+          <div class="col-md-10 text-center text-md-left">
             <ul class="nav">
               <li class="nav-item">
                 <router-link class="nav-link" to="/contacts">Контакты</router-link>
@@ -35,9 +35,11 @@
               </li>
             </ul>
           </div>
-          <div class="col-md-2 text-center">
+          <div class="col-md-2 d-flex">
+            <a class="logo-skolkovo" href="http://school.skolkovo.ru/ru/" target="_blank">
+              <img src="/img/skolkovo.png" alt="">
+            </a>
           </div>
-          <div class="col-md-5 text-center text-md-right"></div>
         </div>
       </div>
     </div>
@@ -65,7 +67,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   footer > [class*="container"] {
     padding-top: 6.25rem;
     padding-bottom: 6.25rem;
@@ -75,5 +77,12 @@
   }
   footer .nav li {
     display: inline-block;
+  }
+  .logo-skolkovo {
+    margin-left: auto;
+    width: 74px;
+    @media (max-width: 768px) {
+      margin-right: auto;
+    }
   }
 </style>

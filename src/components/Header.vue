@@ -21,57 +21,57 @@
             </li>
           </ul>
           <ul class="navbar-nav align-items-center mr-0" v-if="auth">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle no-cursor" href="#" data-toggle="dropdown">
-                <i class="fa fa-lg fa-bell-o active"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                <router-link class="dropdown-item" to="/">
-                  <p class="mb-0 font-weight-normal float-left">У вас 4 непрочитанных уведомлений</p>
-                  <span class="badge badge-pill badge-success float-right">Показать всё</span>
-                </router-link>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="fa fa-info mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-medium">Тест 1</h6>
-                    <p class="font-weight-light small-text mb-0">
-                      2 месяца  назад
-                    </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="fa fa-info mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-medium">Тест 2</h6>
-                    <p class="font-weight-light small-text mb-0">
-                      2 месяца  назад
-                    </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="fa fa-info mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-medium">Тест 3</h6>
-                    <p class="font-weight-light small-text mb-0">
-                      2 месяца  назад
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </li>
+            <!--<li class="nav-item dropdown">-->
+              <!--<a class="nav-link dropdown-toggle no-cursor" href="#" data-toggle="dropdown">-->
+                <!--<i class="fa fa-lg fa-bell-o active"></i>-->
+              <!--</a>-->
+              <!--<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">-->
+                <!--<router-link class="dropdown-item" to="/">-->
+                  <!--<p class="mb-0 font-weight-normal float-left">У вас 4 непрочитанных уведомлений</p>-->
+                  <!--<span class="badge badge-pill badge-success float-right">Показать всё</span>-->
+                <!--</router-link>-->
+                <!--<div class="dropdown-divider"></div>-->
+                <!--<a class="dropdown-item preview-item">-->
+                  <!--<div class="preview-thumbnail">-->
+                    <!--<div class="preview-icon bg-info">-->
+                      <!--<i class="fa fa-info mx-0"></i>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="preview-item-content">-->
+                    <!--<h6 class="preview-subject font-weight-medium">Тест 1</h6>-->
+                    <!--<p class="font-weight-light small-text mb-0">-->
+                      <!--2 месяца  назад-->
+                    <!--</p>-->
+                  <!--</div>-->
+                <!--</a>-->
+                <!--<a class="dropdown-item preview-item">-->
+                  <!--<div class="preview-thumbnail">-->
+                    <!--<div class="preview-icon bg-info">-->
+                      <!--<i class="fa fa-info mx-0"></i>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="preview-item-content">-->
+                    <!--<h6 class="preview-subject font-weight-medium">Тест 2</h6>-->
+                    <!--<p class="font-weight-light small-text mb-0">-->
+                      <!--2 месяца  назад-->
+                    <!--</p>-->
+                  <!--</div>-->
+                <!--</a>-->
+                <!--<a class="dropdown-item preview-item">-->
+                  <!--<div class="preview-thumbnail">-->
+                    <!--<div class="preview-icon bg-info">-->
+                      <!--<i class="fa fa-info mx-0"></i>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="preview-item-content">-->
+                    <!--<h6 class="preview-subject font-weight-medium">Тест 3</h6>-->
+                    <!--<p class="font-weight-light small-text mb-0">-->
+                      <!--2 месяца  назад-->
+                    <!--</p>-->
+                  <!--</div>-->
+                <!--</a>-->
+              <!--</div>-->
+            <!--</li>-->
             <!--<li class="nav-item">-->
               <!--<router-link class="nav-link" to="/chat">-->
                 <!--<i class="fa fa-lg fa-envelope-o"></i>-->

@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import cityMixin from '../../cityMixin';
+import cityMixin from '../../mixins/cityMixin';
 import {mapGetters} from 'vuex';
 
   export default {

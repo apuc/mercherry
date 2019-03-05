@@ -119,7 +119,7 @@
 
 <script>
   import { mapFields } from 'vee-validate';
-  import cityMixin from '../../../cityMixin'
+  import cityMixin from '../../../mixins/cityMixin'
   import {mapGetters, mapActions} from 'vuex';
 
   export default {

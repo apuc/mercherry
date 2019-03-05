@@ -1,0 +1,44 @@
+import {mapActions} from 'vuex';
+import VacancyItem from '../components/VacancyItem';
+
+const profileVacanciesMixin = {
+  data() {
+    return {
+      vacancies: [],
+      currentPage: 1,
+      totalPages: 1,
+      more: false
+    }
+  },
+  components: {VacancyItem},
+  methods: {
+    ...mapActions({
+      VACANCY_RESPONSE: 'profile/VACANCY_RESPONSE'
+    }),
+    moreVacancies() {
+      this.currentPage++;
+      this.getVacancies();
+    },
+    getVacancies() {
+      this.VACANCY_RESPONSE({page: this.currentPage})
+        .then(res => {
+          for (let i = 0; i < res.body.result.length; i++) {
+            this.vacancies.push(res.body.result[i]);
+          }
+          this.currentPage = res.body.currentPage;
+          this.totalPages = res.body.totalPages;
+          if (this.currentPage === this.totalPages) {
+            this.more = false;
+          }
+          else {
+            this.more = true;
+          }
+        });
+    }
+  },
+  created() {
+    this.getVacancies();
+  },
+};
+
+export default profileVacanciesMixin;

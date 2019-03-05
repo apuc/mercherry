@@ -55,5 +55,18 @@ export default {
         }
       )
       .catch(err => console.error(`catch, ${err}`));
-  }
+  },
+
+  'VACANCY_RESPONSE': async (context, params) => {
+    return await Vue.http.get(`${process.env.VUE_APP_API_URL}/jobs/profile`, {params: params})
+      .then(
+        res => {
+          return res
+        },
+        err => {
+          console.log(err);
+        }
+      )
+      .catch(err => console.error(`catch, ${err}`));
+  },
 };

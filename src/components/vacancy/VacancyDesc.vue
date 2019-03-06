@@ -3,20 +3,21 @@
     <template v-if="info.hasOwnProperty('response')">
       <template v-if="info.response.status !== 50">
         <div class="status-response mb-5 mt-2">
-          <div class="status-response__item" v-for="(item, index) in info.response.list">
+          <div class="status-response__item" v-for="(item, index) in info.response.list" :class="statusItemClass(index)">
             <span class="c-dark-gray">{{item}}</span>
-            <div class="status-response__circle" :class="index <= status ? 'status-response__circle--active' : ''"></div>
+            <div class="status-response__circle" :class="{'status-response__circle--active': index <= status, 'status-response__circle--red': status === 0}"></div>
           </div>
           <div class="status-response__line">
             <div class="status-response__line-inner" :style="progressWidth"></div>
           </div>
         </div>
         <div class="green-border p-2 p-sm-3 mb-5">
-          Скопируйте прямую ссылку на размещённый вами пост и нажмите кнопку отправить
+          Вы откликнулись на вакансию, работодатель скоро рассмотрит ее. Статус по вашему отклику смотрите в разделе вакансии в личном кабинете
         </div>
       </template>
-      <div class="text-danger fs-20 font-weight-bold mb-2" v-if="info.response.status === 50">
-        {{info.response.text}}
+      <div class="red-border p-2 p-sm-3 mb-5" v-if="info.response.status === 50">
+        Благодарим что откликнулись на эту вакансию, судя по вашим ответам, она вас до конца не устроит. Просим выбрать другую вакансию или задание.
+        Нам важно, чтобы вакансии соответствовали вашим потребностям.
       </div>
     </template>
     <div class="c-gray fs-14 mb-1">
@@ -149,6 +150,10 @@
           return false;
         }
         return true;
+      },
+      statusItemClass(index) {
+        let length = this.info.response.list.length;
+        return `status-response__item-${index + 1}-${length}`;
       }
     },
     mounted() {
@@ -186,6 +191,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      &-2-3 {
+        left: 50%;
+        transform: translateX(-50%);
+        @media (max-width: 767px) {
+          top: calc(50% - 12px) !important;
+        }
+      }
+      &-2-4 {
+        left: calc(100% / 3);
+        transform: translateX(-50%);
+        @media (max-width: 767px) {
+          top: calc(100% / 3 - 12px) !important;
+        }
+      }
+      &-3-4 {
+        left: calc(100% / 3 * 2);
+        transform: translateX(-50%);
+        @media (max-width: 767px) {
+          top: calc(100% / 3 * 2 - 12px) !important;
+        }
+      }
       @media (max-width: 767px) {
         flex-direction: row-reverse;
         top: unset;
@@ -197,14 +223,8 @@
         left: 0;
         transform: translateX(-50%);
       }
-      &:nth-of-type(2) {
-        left: 50%;
-        transform: translateX(-50%);
-        @media (max-width: 767px) {
-          top: calc(50% - 12px);
-        }
-      }
-      &:nth-of-type(3) {
+      &-3-3,
+      &-4-4{
         right: 0;
         transform: translateX(50%);
         @media (max-width: 767px) {
@@ -224,6 +244,9 @@
       }
       &--active {
         background-color: #54af5d;
+        &.status-response__circle--red {
+          background-color: #ff5e5e;
+        }
       }
     }
     &__line {
@@ -275,6 +298,10 @@
   }
   .green-border {
     border: 1px solid #54af5d;
+    border-radius: 4px;
+  }
+  .red-border {
+    border: 1px solid #ff5e5e;
     border-radius: 4px;
   }
 </style>

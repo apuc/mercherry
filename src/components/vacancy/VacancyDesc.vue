@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="info.hasOwnProperty('response')">
+    <template v-if="info.hasOwnProperty('response') && auth">
       <template v-if="info.response.status !== 50">
         <div class="status-response mb-5 mt-2">
           <div class="status-response__item" v-for="(item, index) in info.response.list" :class="statusItemClass(index)">

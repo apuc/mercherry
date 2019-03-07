@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="headerClass === undefined ? 'header-sticky bg-white header-light' : headerClass">
+  <header class="header" :class="headerClass === undefined ? 'bg-white header-light' : headerClass">
     <div class="container">
       <nav class="navbar navbar-expand-xl" :class="color === undefined ? 'navbar-light' : `navbar-${color}`">
         <router-link class="navbar-brand" to="/">
@@ -80,7 +80,7 @@
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{dataUser.username}}</a>
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/profile">Профиль</router-link>
-                <router-link class="dropdown-item" @click.native="logOut()" to="/login">Выход</router-link>
+                <button data-toggle="modal" data-target="#logoutModal" class="dropdown-item">Выход</button>
               </div>
             </li>
           </ul>
@@ -114,10 +114,6 @@
       ...mapMutations({
         AUTH: 'profile/AUTH'
       }),
-      async logOut() {
-        localStorage.clear();
-        await this.AUTH(false);
-      }
     },
   }
 </script>

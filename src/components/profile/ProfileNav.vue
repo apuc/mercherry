@@ -8,7 +8,7 @@
                class="nav-item nav-link"
                data-toggle="tab"
                :href="`#${item.href}`"
-               :class="index === 0 ? 'active' : ''"
+               :class="activeClass(index) === index ? 'active' : ''"
             >
               {{item.name}}
             </a>
@@ -26,6 +26,14 @@
       tabs: {
         type: Array,
         required: true
+      }
+    },
+    methods: {
+      activeClass() {
+        if (this.$route.hash === '#nav-config') {
+          return 4;
+        }
+        else return 0;
       }
     }
   }

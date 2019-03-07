@@ -80,6 +80,7 @@
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{dataUser.username}}</a>
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/profile">Профиль</router-link>
+                <router-link class="dropdown-item" to="/profile#nav-config">Настройки</router-link>
                 <button data-toggle="modal" data-target="#logoutModal" class="dropdown-item">Выход</button>
               </div>
             </li>

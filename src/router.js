@@ -75,7 +75,7 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       meta: {layout: 'profile'},
-      component: Profile
+      component: Profile,
     },
     {
       path: '/chat',

@@ -1,5 +1,7 @@
 <template>
-  <div class="tab-pane">
+  <div class="tab-pane"
+       :class="$route.hash === '#nav-config' ? 'show active' : ''"
+  >
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
         <ProfileConfigAvatar/>

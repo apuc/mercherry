@@ -9,7 +9,7 @@
           <router-link class="btn btn-primary btn-rounded px-5" to="/job">Поиск вакансий</router-link>
         </div>
       </div>
-      <div class="row justify-content-center mt-10">
+      <div class="row justify-content-center my-10">
         <div class="col-md-10 col-xl-8">
           <div class="row gutter-2 separated text-center">
             <HomeSearchNumber v-for="(item, index) in numbers"
@@ -18,6 +18,15 @@
             />
           </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-outline-dark btn-icon-text">
+          <i class="mdi mdi-android-debug-bridge btn-icon-prepend mdi-36px"></i>
+          <span class="d-inline-block text-left">
+                            <small class="font-weight-light d-block">Get it on the</small>
+                            Google Play
+                          </span>
+        </button>
       </div>
     </div>
   </section>
